@@ -1,6 +1,6 @@
 # Food You 
 
-![](/home/daves/repos/M2-PROJECT/images/jason-briscoe-7MAjXGUmaPw-unsplash.jpg)
+![](./../home/daves/repos/M2-PROJECT/images/jason-briscoe-7MAjXGUmaPw-unsplash.jpg)
 
 ## Description
 
