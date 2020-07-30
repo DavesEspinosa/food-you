@@ -1,31 +1,18 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
 const recipeSchema = new Schema({
-  title: { type: String, required: true, unique: true },
-  level: {
+  title: { type: String, required: true },
+  inspiration: { type: String, required: true },
+  ingredients: { type: [String], required: true },
+  cuisine: {
     type: String,
-    enum: ["Easy Peasy", "Amateur Chef", "UltraPro Chef"],
+    enum: ["Asian", "Mediterranian", "Vegan"],
+    required: true,
   },
-  ingredients: { type: [String] },
-  cuisine: { type: String, required: true },
-  dishType: {
-    type: String,
-    enum: [
-      "breakfast",
-      "main_course",
-      "soup",
-      "snack",
-      "drink",
-      "dessert",
-      "other",
-    ],
-  },
+  video: { type: String, required: true },
   image: {
     type: String,
-    default: "https://images.media-allrecipes.com/images/75131.jpg",
+    required: true,
   },
-  duration: { type: Number, min: 0 },
+  duration: { type: Number, min: 0, max: 1000 },
   creator: { type: String },
   created: { type: Date, default: Date.now },
 });
