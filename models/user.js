@@ -11,10 +11,13 @@ const userSchema = new Schema({
   address: {type:String, required:true},
   city: {type:String, required:true},
   phone: {type:String, required:true},
-  favs: [ { type : Schema.Types.ObjectId, ref: 'Recipe' } ]
+  cartList: [ { type : Schema.Types.ObjectId, ref: 'Recipe' } ]
+},{
+  timestamps: {
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+  }
 });
-
-userSchema.set("timestamps", true);
 
 const User = mongoose.model("User", userSchema);
 

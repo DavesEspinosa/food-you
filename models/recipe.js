@@ -1,21 +1,31 @@
-const recipeSchema = new Schema({
-  title: { type: String, required: true },
-  inspiration: { type: String, required: true },
-  ingredients: { type: [String], required: true },
-  cuisine: {
-    type: String,
-    enum: ["Asian", "Mediterranian", "Vegan"],
-    required: true,
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const recipeSchema = new Schema(
+  {
+    author: { type: Schema.Types.ObjectId, ref: "User", default: null },
+    title: { type: String, required: true },
+    inspiration: { type: String, required: true },
+    ingredients: { type: [String], required: true },
+    cuisine: {
+      type: String,
+      enum: ["Asian", "Mediterranian", "Vegan"],
+      required: true,
+    },
+    video: { type: String, required: true },
+    image: {
+      type: String,
+      required: true,
+    },
+    duration: { type: Number, min: 0, max: 1000 },
   },
-  video: { type: String, required: true },
-  image: {
-    type: String,
-    required: true,
-  },
-  duration: { type: Number, min: 0, max: 1000 },
-  creator: { type: String },
-  created: { type: Date, default: Date.now },
-});
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
+);
 
 const Recipe = mongoose.model("Recipe", recipeSchema);
 
