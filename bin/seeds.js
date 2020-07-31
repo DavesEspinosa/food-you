@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Recipe = require('../models/recipe');
 
 const dbName = 'food-you';
-mongoose.connect(`mongodb: //localhost/${dbName}`, { 
+mongoose.connect(`mongodb://localhost/${dbName}`, { 
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
