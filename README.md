@@ -1,6 +1,6 @@
 # Food You 
 
-![](/home/daves/repos/M2-PROJECT/images/jason-briscoe-7MAjXGUmaPw-unsplash.jpg)
+![](./../home/daves/repos/M2-PROJECT/images/jason-briscoe-7MAjXGUmaPw-unsplash.jpg)
 
 ## Description
 
@@ -8,7 +8,7 @@ Desde Food You  te ayudamos a crear platos maravillosos para tI y quien tu quier
 
 - [ ] Escoge entre una variedad de recetas con productos frescos y variados.
 - [ ] Realiza tu pedido y recibirás en casa el box con los ingredientes necesarios.
-- [ ] Añadiremos a tu perfil un video con la receta, para que la sigas a tu ritmo.
+- [ ] Tendrás acceso a un video con la receta, para que la sigas a tu ritmo.
 
 ## User Stories
 
