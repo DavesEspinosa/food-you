@@ -1,0 +1,23 @@
+{
+  "name": "Food-You",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavesEspinosa/Food-You.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavesEspinosa/Food-You/issues"
+  },
+  "homepage": "https://github.com/DavesEspinosa/Food-You#readme",
+  "dependencies": {
+    "mongoose": "^5.9.26"
+  }
+}
