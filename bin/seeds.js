@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const Recipe = require('../models/recipe');
+const User = require('../models/user');
 
 const dbName = 'food-you';
 mongoose.connect(`mongodb://localhost/${dbName}`, { 
@@ -40,9 +42,30 @@ const recipes = [
     duration: 25}
 ]
 
+const users = [
+  {
+    name: "admin",
+    firstname:  "admin",
+    username:  "admin", 
+    email:  "admin@admin.com", 
+    firstname:  "admin", 
+    postcode: 1234,
+    address: "admin",
+    city: "admin",
+    phone: "admin",
+    cartList: []
+  }
+]
+
 Recipe.create(recipes, (err) => {
   if(err) { throw(err) }
   console.log(`Created ${recipes.length} recipes`);
+  mongoose.connection.close()
+});
+
+User.create(users, (err) => {
+  if(err) { throw(err) }
+  console.log(`Created ${users.length} users`);
   mongoose.connection.close()
 })
 
@@ -50,8 +73,17 @@ Recipe.create(recipes, (err) => {
 //   try {
 //     await Recipe.create(recipes);
 //     console.log(`Created ${recipes.length} recipes`);
-//     console.log(recipes);
-//     mongoose.connection.close();
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// async () => {
+//   try {
+//     await User.create(users);
+//     console.log(`Created ${users.length} users`);
+//     console.log(users);
+//     await mongoose.connection.close();
 //   } catch (error) {
 //     console.log(error)
 //   }
