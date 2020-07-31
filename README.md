@@ -4,7 +4,7 @@
 
 ## Description
 
-Desde Food You  te ayudamos a crear platos maravillosos para tI y quien tu quieras, simplemente tienes que seguir estos sencillos pasos:
+Desde Food You  te ayudamos a crear platos maravillosos para tí y a quien tú quieras, simplemente tienes que seguir estos sencillos pasos:
 
 - [ ] Escoge entre una variedad de recetas con productos frescos y variados.
 - [ ] Realiza tu pedido y recibirás en casa el box con los ingredientes necesarios.
@@ -20,7 +20,7 @@ Desde Food You  te ayudamos a crear platos maravillosos para tI y quien tu quier
 - **recipes** - Como usuario quiero visualizar  una breve descripción de las recetas que ofrece la aplicación y poder filtrar por tipo de cocina y tiempo de preparación.
 - **recipes details** - Como usuario quiero poder ver con más detalle la receta escogida, poder adquirir el producto escogido, agregarlos a favoritos y  poder volver a la vista anterior. 
 - **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
-- **favorite list** - As a user I want to see the list of my favorite and delete them.
+- **favorite list** - As a user I want to see the list of my favorites and delete them.
 - **edit user** - As a user I want to be able to edit my profile.
 
 
