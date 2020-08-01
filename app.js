@@ -7,6 +7,9 @@ const favicon = require('serve-favicon');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 mongoose
   .connect('mongodb://localhost/food-you', {
     useNewUrlParser: true,
@@ -23,6 +26,7 @@ mongoose
 
 const indexRouter = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
+const recipesRouter = require('./routes/recipes.routes');
 
 const app = express();
 
@@ -37,8 +41,32 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-app.use('/', authRouter);
+app.use(session({
+  secret: 'Your cook is only yours',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }, // una horita poe ejemplo
+  store: new MongoStore ({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
+  })
+}));
+
+app.use((req, res, next) => {
+  if (req.session.currentUser) {
+    //currentUserInfo es la informacion del usuario en la sesion
+    res.locals.currentUserInfo = req.session.currentUser;
+    //indica que hay un usuario loggeado
+    res.locals.isUserLoggedIn = true;
+  } else {
+    res.locals.isUserLoggedIn = false;
+  }
+  next();
+});
+
 app.use('/', indexRouter);
+app.use('/', authRouter);
+app.use('/', recipesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

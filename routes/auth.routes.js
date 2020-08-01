@@ -28,8 +28,8 @@ router.post('/signup', async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(password, salt);
 
     await User.create({
+      ...req.body,
       password: hashedPassword,
-      ...req.body
     });
     res.redirect('/login')
   } catch (error) {
@@ -39,6 +39,39 @@ router.post('/signup', async (req, res, next) => {
 
 router.get('/login', (req, res, next) => {
   res.render('auth/login', { errorMessage: ''});
+});
+
+router.post('/login', async (req, res, next) => {
+  const {email , password } = req.body;
+
+  if (email === '' || password === '') {
+    res.render('auth/login', {
+      errorMessage: 'Enter both email and password to log in.'
+    });
+    return;
+  }
+
+  try {
+    const user = await User.findOne({email});
+    if(!user){
+      res.render('auth/login', {
+        errorMessage: `There isn't an account with email ${email}.`
+      });
+      return;
+    }
+    // magic, como compara un hash salteado x veces y te lo mira con un string...
+    if (!bcrypt.compareSync(password, user.password)) {
+      res.render('auth/login', {
+        errorMessage: 'Invalid password.'
+      });
+      return;
+    }
+    // GUARDAMOS LA SESSION EN CURRENTUSER ¡¡HABEMUS "PERSISTENCIA" DE DATOS!!
+    req.session.currentUser = user;
+    res.redirect('/list-recipes');
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 module.exports = router;
