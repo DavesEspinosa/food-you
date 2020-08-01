@@ -12,19 +12,13 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    console.log('Estamos en el post signup', req.body);
-    const { 
-      email,
-      password,
-      } = req.body;
-    console.log(email)
+    const { email, password } = req.body;
     if(email === '' || password === ''){
       res.render('auth/signup', { errorMessage: 'Enter email and password'} );
       return;
     }
     
     const isUser = await User.findOne({ email });
-    console.log(isUser)
     if(isUser){
       res.render('auth/signup', { errorMessage: 'This user already exists'} );
       return;
@@ -37,7 +31,6 @@ router.post('/signup', async (req, res, next) => {
       password: hashedPassword,
       ...req.body
     });
-    console.log('Hecho el usuario', req.body);
     res.redirect('/login')
   } catch (error) {
     res.render('auth/signup', { errorMessage: "Ops!! Error while creating account. Please try again."})
