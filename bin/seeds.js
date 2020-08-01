@@ -12,17 +12,22 @@ mongoose.connect(`mongodb://localhost/${dbName}`, {
 const recipes = [
   {
     author: null,
-    title: "Patatas bravas",
-    inspiration: "Unas patatas que te hacen alcanzar el nirvanna picante",
+    title: "Whole roast turbot with clams, fennel and potatoes",
+    inspiration: "Serving a whole turbot may seem extravagant, but it’s simple to prepare and makes a memorable centrepiece. Cooking a whole fish makes an impressive dinner party main.",
     ingredients: [
-      "Patatas",
-      "delicias picantes",
-      "amor"
-    ],
-    cuisine: "Asian",
-    video: "https://www.youtube.com/watch?v=Qph_wEWWTFY&vl=es",
-    image: "https://live.mrf.io/statics/i/ps/www.cocinacaserayfacil.net/wp-content/uploads/2018/02/patatas-bravas-receta.jpg?width=1200&enable=upscale",
-    duration: 30,
+      "small fennel bulbs",
+      "waxy potatoes (such as charlotte)",
+      "onion",
+      "chilli flakes", 
+      "fennel seeds",
+      "olive oil",
+      "live clams",
+      "dry white wine",
+      "turbot"],
+    cuisine: "Mediterranian",
+    video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
+    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2019/06/turbot-768x960.jpg", 
+    duration: 50
   },
   {
     author: null,
@@ -34,12 +39,31 @@ const recipes = [
       "garlic cloves",
       "ripe tomatoes", 
       "medium free-range eggs",
-      "Handful fresh dill",
+      "fresh dill",
       "vegetarian feta"],
-    cuisine: "Vegan",
+    cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=0CH1rhKThk4",
     image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/02/159-Greek-zucchhini-frittata-768x960.jpg", 
-    duration: 25}
+    duration: 25
+  },
+  {
+    author: null,
+    title: "Creamy vegan sausage and spinach pasta",
+    inspiration: "Comforting and creamy, this plant-based pasta dish marries vegan sausages with fennel seeds, red onion and garlic for a satisfying savoury flavour, it will impress anyone",
+    ingredients: [
+      "olive oil",
+      "red onions",
+      "vegan sausages",
+      "baby leaf spinach", 
+      "dried pasta rigatoni",
+      "soya cream",
+      "flatleaf parsley"],
+    cuisine: "Vegan",
+    video: "",
+    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg", 
+    duration: 20
+  }
+
 ]
 
 const users = [
