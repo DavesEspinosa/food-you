@@ -40,7 +40,7 @@ const recipes = [
     video: "https://www.youtube.com/watch?v=0CH1rhKThk4",
     image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/02/159-Greek-zucchhini-frittata-768x960.jpg", 
     duration: 25}
-]
+];
 
 const users = [
   {
@@ -55,7 +55,7 @@ const users = [
     phone: "admin",
     cartList: []
   }
-]
+];
 
 Recipe.create(recipes, (err) => {
   if(err) { throw(err) }
@@ -67,24 +67,4 @@ User.create(users, (err) => {
   if(err) { throw(err) }
   console.log(`Created ${users.length} users`);
   mongoose.connection.close()
-})
-
-// async () => {
-//   try {
-//     await Recipe.create(recipes);
-//     console.log(`Created ${recipes.length} recipes`);
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-
-// async () => {
-//   try {
-//     await User.create(users);
-//     console.log(`Created ${users.length} users`);
-//     console.log(users);
-//     await mongoose.connection.close();
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+});
