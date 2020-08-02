@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Recipe = require('../models/recipe');
-const User = require('../models/user');
+const Recipe = require('../models/recipe.model');
+const User = require('../models/user.model');
 
 const dbName = 'food-you';
 mongoose.connect(`mongodb://localhost/${dbName}`, { 
@@ -43,15 +43,17 @@ const recipes = [
 ];
 
 const users = [
+  
   {
-    name: "admin",
-    firstname:  "admin",
-    username:  "admin", 
-    email:  "admin@admin.com", 
-    firstname:  "admin", 
-    postcode: 1234,
-    address: "admin",
-    city: "admin",
+    name: "a",
+    firstname:  "a",
+    username:  "a",
+    password: "$2a$15$ICydVO.GUykwgekvwCTJZOG83/mx6y1fFZypcBtVAj7498683LTuW",
+    email:  "a@a", 
+    firstname:  "a", 
+    postcode: "a",
+    address: "a",
+    city: "a",
     phone: "admin",
     cartList: []
   }
