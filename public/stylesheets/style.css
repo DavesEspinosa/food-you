@@ -1,33 +1,166 @@
-/* body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-*/
+
+
 a {
   color: #00b7ff;
 }
 
-.hero-image {
-  background-image: url(/public/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
-  background-color: #cccccc;
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+.footer {
+   margin-bottom: 0px;
+   width: 100%;
 }
-
-.hero-text {
-  text-align: center;
+/* Al body de cada vista, darle siempre 2em de padding  */
+/* .main{
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 2em;
+} */
+/* .centered {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+ */
+
+header {
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
+  background-size: cover;
+  height: 100vh;
+  padding: 2em;
+}
+
+.title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.title h1 {
+  margin: 0;
+  font-size: 3rem;
+ 
+}
+.info h2 {
+  font-size: 2rem;
+}
+.title p{
+  margin: 0;
+  font-size: 1.3rem;
   color: white;
 }
 
 
- .footer {
+.info {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 2em;
+}
+
+
+a {
+  color: #00b7ff;
+}
+
+.footer {
    margin-bottom: 0px;
    width: 100%;
- }
+}
+/* Al body de cada vista, darle siempre 2em de padding  */
+/* .main{
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 2em;
+} */
+
+header {
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
+  background-size: cover;
+  height: 100vh;
+  padding: 2em;
+}
+
+.title {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.title h1 {
+  margin: 0;
+  font-size: 3rem;
+ 
+}
+.info h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+.info h3 {
+  font-size: 1rem;
+  text-align: center;
+}
+.title p{
+  margin: 0;
+  font-size: 1.3rem;
+  color: white;
+}
+.info {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 2em;
+}
+.explanation{
+  padding: 2em;
+}
+.card{
+  background-color: none;
+  border: none;
+}
+.card-title {
+  text-align: center;
+}
+.card-body{
+  text-align: center;
+}
+
+@media (min-width: 300px) and (max-width: 550px) {
+  .title {
+    top: 14%;
+    width: 98%;
+  }
+  .title h1{
+    font-size: 2em;
+  }
+}
+@media (min-width: 550px) and (max-width: 780px) {
+  .title {
+    top: 22%;
+    width: 80%;
+  }
+  .title h1{
+    font-size: 2em;
+  }
+}
+
+

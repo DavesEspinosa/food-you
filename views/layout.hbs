@@ -26,6 +26,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   </head>
 <body>
+    
   <div class="wrapper">
         <!-- Sidebar Nav -->
         <nav id="sidebar">
@@ -34,9 +35,10 @@
             </div>
 
             <div class="sidebar-header">
-                <h3>Random user icon</h3>
+               
+                <h3>{{currentUserInfo.username}}</h3>
             </div>
-      {{#if isUserLoggedIn}}
+       {{#if isUserLoggedIn}}
             <ul class="list-unstyled components">
                 <li>
                     <a href="#">Profile</a>
@@ -72,11 +74,15 @@
         <!-- Page Content and nav without collapse, donde cambiará el icono de usuario-->
   
       <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
+                 {{#if isUserLoggedIn}}
+                        <i class="fas fa-user-check"></i>
+                 {{else}}
                         <i class="fas fa-user-alt-slash"></i>
+                {{/if}}
                         <span>Menu</span>
                     </button>
                      <a class="navbar-brand" href="/list-recipes"><i class="fas fa-utensils"></i></a>
@@ -90,7 +96,7 @@
         <div class="socials">
               <a href="http://twitter.com" target="_blank"><i class="fab fa-twitter fa-1x text-info mx-1"></i></a>
               <a href="http://facebook.com" target="_blank"><i class="fab fa-facebook fa-1x text-primary mx-1"></i></a>
-              <a href="http://google.com" target="_blank"><i class="fab fa-google-plus fa-1x text-danger mx-1 "></i></a>
+              <a href="http://pinterest.com" target="_blank"><i class="fab fa-pinterest fa-fw"></i></a>
               <a href="http://youtube.com" target="_blank"><i class="fab fa-youtube fa-1x text-danger mx-"></i></a>
           </div>
       </nav>
