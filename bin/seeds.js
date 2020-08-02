@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Recipe = require('../models/recipe');
-const User = require('../models/user');
+const Recipe = require('../models/recipe.model');
+const User = require('../models/user.model');
 
 const dbName = 'food-you';
 mongoose.connect(`mongodb://localhost/${dbName}`, { 
