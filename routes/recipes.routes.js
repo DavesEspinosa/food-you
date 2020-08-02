@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const Recipe = require("../models/recipe");
-const User = require("../models/user");
+const Recipe = require("../models/recipe.model");
+const User = require("../models/user.model");
 
 router.use((req, res, next) => {
   if(req.session.currentUser){
