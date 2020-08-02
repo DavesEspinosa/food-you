@@ -1,7 +1,15 @@
-<h1>Estas loggin</h1>
+<h1>Our choices</h1>
 
-   
-{{#each recipes}}
-  <h2>{{title}}</h2>
-{{/each}}
-
+<h5>That's what we offer</h5>
+<main class="list-recipes-container">
+  {{#each recipes}}
+  <div class="card" style="width: 18rem;" id="card-list">
+    <img src="{{image}}" class="card-img-top" alt="{{title}}" id="img-card-list">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <p class="card-text">{{inspiration}}</p>
+    </div>
+    <a href=`/recipe-detail/{{id}}` class="btn btn-primary" id="a-detail-recipe">Details</a>
+  </div>
+  {{/each}}
+</main>
