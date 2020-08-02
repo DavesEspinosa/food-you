@@ -26,9 +26,8 @@ a {
   color: white;
 }
 
-/* @media (min-width: 320px) and (max-width: 420px) {
-  .hero-text h1 {
-    font-size: 100%;
-  }
-}
- */
+
+ .footer {
+   margin-bottom: 0px;
+   width: 100%;
+ }
