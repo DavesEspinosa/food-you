@@ -79,7 +79,7 @@ const users = [
     phone: "admin",
     cartList: []
   }
-]
+];
 
 Recipe.create(recipes, (err) => {
   if(err) { throw(err) }
@@ -91,24 +91,4 @@ User.create(users, (err) => {
   if(err) { throw(err) }
   console.log(`Created ${users.length} users`);
   mongoose.connection.close()
-})
-
-// async () => {
-//   try {
-//     await Recipe.create(recipes);
-//     console.log(`Created ${recipes.length} recipes`);
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-
-// async () => {
-//   try {
-//     await User.create(users);
-//     console.log(`Created ${users.length} users`);
-//     console.log(users);
-//     await mongoose.connection.close();
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+});

@@ -11,7 +11,9 @@ const userSchema = new Schema({
   address: {type:String, required:true},
   city: {type:String, required:true},
   phone: {type:String, required:true},
-  cartList: [ { type : Schema.Types.ObjectId, ref: 'Recipe' } ]
+  profilePicture: { type: String }, // agregar url public image profile picture para el default
+  cartList: [ { type : Schema.Types.ObjectId, ref: 'Recipe' } ],
+  ownRecipe: [ { type : Schema.Types.ObjectId, ref: 'UserRecipe' } ],
 },{
   timestamps: {
     createdAt: "created_at",
