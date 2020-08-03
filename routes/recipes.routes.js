@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const Recipe = require("../models/recipe.model");
-const User = require("../models/user.model");
-const UserRecipe = require("../models/user-recipe.model");
 
 router.use((req, res, next) => {
   if(req.session.currentUser){
@@ -34,7 +32,10 @@ router.get("/own-recipes", async (req, res, next) => {
   try {
     const { _id } = req.session.currentUser;
     
-    const recipes = await UserRecipe.find({author: _id});
+    const recipes = await Recipe.find({author: _id});
+    recipes.length === 0 ?
+    res.render("recipes/own-recipes", { errorMessage: true })
+    :
     res.render("recipes/own-recipes", { recipes });
   } catch (error) {
     console.log(error);
@@ -43,21 +44,15 @@ router.get("/own-recipes", async (req, res, next) => {
   }
 });
 
-router.get("/add-recipe", async (req, res, next) => {
-  try {
-    res.render("recipes/add-recipe");
-  } catch (error) {
-    console.log(error);
-    next(error);
-    return;
-  }
+router.get("/add-recipe", (req, res, next) => {
+  res.render("recipes/add-recipe");
 });
 
 router.post("/add-recipe", async (req, res, next) => {
   try {
     const { _id } = req.session.currentUser;
-    const recipes = await UserRecipe.find({author: _id});
-    res.render("recipes/add-recipe", { recipes });
+    await Recipe.create({ ...req.body, author: _id });
+    res.redirect("/own-recipes");
   } catch (error) {
     console.log(error);
     next(error);
