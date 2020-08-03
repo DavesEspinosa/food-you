@@ -10,8 +10,8 @@ router.use((req, res, next) => {
     next();
     return;
   }
-  // si no hay ning'un usuario le redige al login
-  res.redirect('/login')
+  // si no hay ning'un usuario le redige al Home
+  res.redirect('/')
 })
 
 router.get("/list-recipes", async (req, res, next) => {

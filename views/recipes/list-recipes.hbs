@@ -1,11 +1,17 @@
-<h1>Our choices</h1>
 
+
+<div class="header" id="myHeader">
+  <h1>My Header</h1>
+</div>
+
+<section class="content">
 <h5>That's what we offer</h5>
-<main class="list-recipes-container">
-  {{#each recipes}}
-    {{> cardRecipe this}}
-  {{/each}}
-</main>
+  <div class="list-recipes-container">
+    {{#each recipes}}
+      {{> cardRecipe this}}
+    {{/each}}
+  </div>
+</section>
 
 {{#if errorMessage}}
   <p class="error-message">

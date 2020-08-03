@@ -1,9 +1,16 @@
 <h1>Your recipes</h1>
 
-<a href="/add-recipe">Add you recipes</a>
+<section class="content">
+  <a href="/add-recipe">Add you recipes</a>
+  <div class="list-recipes-container">
+    {{#each recipes}}
+      {{> cardRecipe this}}
+    {{/each}}
+  </div>
+</section>
 
-<main class="list-recipes-container">
-  {{#each recipes}}
-    {{> cardRecipe this}}
-  {{/each}}
-</main>
+{{#if errorMessage}}
+  <p class="error-message">
+    LA BASE DE DATOS A IMPLOSIONADO
+  </p>
+{{/if}}
