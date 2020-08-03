@@ -66,6 +66,7 @@ router.post("/add-recipe", async (req, res, next) => {
 router.get("/recipe/:id", async (req, res, next) => {
   try {
     const recipe = await Recipe.findById({_id:req.params.id});
+    console.log(recipe);
     res.render("recipes/recipe-details", {recipe});
   } catch (error) {
     console.log(error);
