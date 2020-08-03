@@ -6,36 +6,6 @@ a {
   margin-bottom: 0px;
   width: 100%;
 }
-/* Al body de cada vista, darle siempre 2em de padding  */
-/* .main{
-    position: relative;
-    text-align: center;
-    color: white;
-    padding: 2em;
-} */
-/* .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
- */
-
-a {
-  color: #00b7ff;
-}
-
-.footer {
-  margin-bottom: 0px;
-  width: 100%;
-}
-/* Al body de cada vista, darle siempre 2em de padding  */
-/* .main{
-    position: relative;
-    text-align: center;
-    color: white;
-    padding: 2em;
-} */
 
 .presentation {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -104,9 +74,6 @@ a {
   margin-bottom: 10px;
 }
 
-#a-detail-recipe {
-}
-
 #img-card-list {
   height: 300px;
 }
@@ -137,6 +104,41 @@ a {
 .buttons{
   display: flex;
   justify-content: center;
+}
+
+.add-recipe-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.add-recipe-form{
+  min-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-recipe-button{
+  align-self: center;
+  width: 40%;
 }
 
 @media (min-width: 300px) and (max-width: 550px) {
