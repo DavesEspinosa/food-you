@@ -1,50 +1,14 @@
-
-
 a {
   color: #00b7ff;
 }
 
 .footer {
-   margin-bottom: 0px;
-   width: 100%;
+  margin-bottom: 0px;
+  width: 100%;
 }
-/* Al body de cada vista, darle siempre 2em de padding  */
-/* .main{
-    position: relative;
-    text-align: center;
-    color: white;
-    padding: 2em;
-} */
-/* .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
- */
-
-a {
-  color: #00b7ff;
-}
-
-.footer {
-   margin-bottom: 0px;
-   width: 100%;
-}
-/* Al body de cada vista, darle siempre 2em de padding  */
-/* .main{
-    position: relative;
-    text-align: center;
-    color: white;
-    padding: 2em;
-} */
 
 .presentation {
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
   background-size: cover;
   height: 100vh;
@@ -65,7 +29,6 @@ a {
 .title h1 {
   margin: 0;
   font-size: 3rem;
- 
 }
 .info h2 {
   font-size: 2rem;
@@ -75,7 +38,7 @@ a {
   font-size: 1rem;
   text-align: center;
 }
-.title p{
+.title p {
   margin: 0;
   font-size: 1.3rem;
   color: white;
@@ -85,20 +48,19 @@ a {
   margin: 20px auto;
   padding: 2em;
 }
-.explanation{
+.explanation {
   padding: 2em;
 }
-.card{
+.card {
   background-color: none;
   border: none;
 }
 .card-title {
   text-align: center;
 }
-.card-body{
+.card-body {
   text-align: center;
 }
-
 
 .list-recipes-container {
   display: flex;
@@ -106,19 +68,14 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 2%;
-  
 }
-#card-list{
+#card-list {
   margin-right: 20px;
   margin-bottom: 10px;
 }
 
-#a-detail-recipe{
-  
-}
-
 #img-card-list {
-  height:300px;
+  height: 300px;
 }
 
 .header {
@@ -148,13 +105,49 @@ a {
   display: flex;
   justify-content: center;
 }
+.signup-container,
+.add-recipe-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.signup-form,
+.add-recipe-form{
+  min-width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+.signup-button,
+.add-recipe-button{
+  align-self: center;
+  width: 40%;
+}
 
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
     top: 14%;
     width: 98%;
   }
-  .title h1{
+  .title h1 {
     font-size: 2em;
   }
 }
@@ -163,7 +156,11 @@ a {
     top: 22%;
     width: 80%;
   }
-  .title h1{
+  .title h1 {
     font-size: 2em;
   }
+}
+
+.form-group {
+  padding: 0 20px;
 }

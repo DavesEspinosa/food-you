@@ -48,7 +48,7 @@ app.use(session({
   secret: 'Your cook is only yours',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 600000 }, // una horita poe ejemplo
+  cookie: { maxAge: 6000000 }, // una horita poe ejemplo
   store: new MongoStore ({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60 // 1 day

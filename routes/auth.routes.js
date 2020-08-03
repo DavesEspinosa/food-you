@@ -74,4 +74,21 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
+router.get('/logout', (req, res, next) => {
+  // si no existe un usuario en la sesion
+  if (!req.session.currentUser) {
+    res.redirect('/');
+    return;
+  }
+  // destruyes la sesion
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    // redirecciona cuando haya terminado de destruir la sesion
+    res.redirect('/');
+  });
+});
+
 module.exports = router;
