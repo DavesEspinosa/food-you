@@ -105,7 +105,7 @@ a {
   display: flex;
   justify-content: center;
 }
-
+.signup-container,
 .add-recipe-container{
   display: flex;
   flex-direction: column;
@@ -130,12 +130,13 @@ a {
   width: 100%;
 }
 
+.signup-form,
 .add-recipe-form{
   min-width: 450px;
   display: flex;
   flex-direction: column;
 }
-
+.signup-button,
 .add-recipe-button{
   align-self: center;
   width: 40%;
