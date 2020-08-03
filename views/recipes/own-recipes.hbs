@@ -1,0 +1,9 @@
+<h1>Your recipes</h1>
+
+<a href="/add-recipe">Add you recipes</a>
+
+<main class="list-recipes-container">
+  {{#each recipes}}
+    {{> cardRecipe this}}
+  {{/each}}
+</main>
