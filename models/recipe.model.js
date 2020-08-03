@@ -9,10 +9,9 @@ const recipeSchema = new Schema(
     ingredients: { type: String, required: true },
     cuisine: {
       type: String,
-      enum: ["Asian", "Mediterranian", "Vegan"],
-      required: true,
+      enum: ["Asian", "Mediterranian", "Vegan", "Other"]
     },
-    video: { type: String, required: true },
+    video: { type: String},
     image: {
       type: String,
       required: true,
@@ -30,6 +29,3 @@ const recipeSchema = new Schema(
 const Recipe = mongoose.model("Recipe", recipeSchema);
 
 module.exports = Recipe;
-
-// lines 33 and 35 could be done in one line:
-// module.exports = mongoose.model('Recipe', recipeSchema);
