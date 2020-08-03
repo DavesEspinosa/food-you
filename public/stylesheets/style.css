@@ -23,51 +23,6 @@ a {
 }
  */
 
-header {
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
-  background-size: cover;
-  height: 100vh;
-  padding: 2em;
-}
-
-.title {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-.title h1 {
-  margin: 0;
-  font-size: 3rem;
- 
-}
-.info h2 {
-  font-size: 2rem;
-}
-.title p{
-  margin: 0;
-  font-size: 1.3rem;
-  color: white;
-}
-
-
-.info {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 2em;
-}
-
-
 a {
   color: #00b7ff;
 }
@@ -84,7 +39,7 @@ a {
     padding: 2em;
 } */
 
-header {
+.presentation {
   background: 
     linear-gradient(
       rgba(0, 0, 0, 0.5),
@@ -98,7 +53,7 @@ header {
 
 .title {
   position: absolute;
-  top: 20%;
+  top: 28%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -144,6 +99,52 @@ header {
   text-align: center;
 }
 
+
+.list-recipes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2%;
+  
+}
+#card-list{
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+#a-detail-recipe{
+  
+}
+
+#img-card-list {
+  height:300px;
+}
+
+.header {
+  padding: 10px 16px;
+  background: white;
+  opacity: 0.7;
+  color: black;
+  z-index: 2;
+  text-align: center;
+}
+
+.content {
+  padding: 16px;
+  z-index: 1;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
     top: 14%;
@@ -161,21 +162,4 @@ header {
   .title h1{
     font-size: 2em;
   }
-}
-
-.list-recipes-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-#card-list{
-  margin-right: 20px;
-  margin-bottom: 10px;
-}
-
-#a-detail-recipe{
-  
-}
-
-#img-card-list {
-  height:300px;
 }
