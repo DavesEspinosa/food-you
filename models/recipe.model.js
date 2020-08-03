@@ -6,7 +6,7 @@ const recipeSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "User", default: null },
     title: { type: String, required: true },
     inspiration: { type: String, required: true },
-    ingredients: { type: [String], required: true },
+    ingredients: { type: String, required: true },
     cuisine: {
       type: String,
       enum: ["Asian", "Mediterranian", "Vegan"],
