@@ -144,6 +144,10 @@ a {
 .sticky + .content {
   padding-top: 102px;
 }
+.buttons{
+  display: flex;
+  justify-content: center;
+}
 
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
