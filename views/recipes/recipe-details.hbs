@@ -1,4 +1,4 @@
-{{#if this.data.author}}
+{{#if this.data.recipe.author}}
 <div class="header" id="myHeader">
   <h1>{{currentUserInfo.name}} Recipes</h1>
 </div>
@@ -24,16 +24,24 @@
     {{/if}}
   </div>
 </div>
-{{#if this.data.author}}
+{{#if this.data.recipe.author}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}/delete" method="post">
     <button class="btn btn-danger" type="submit">Delete</button>
   </form>
 </div>
 {{else}}
+  {{#if this.data.isSell}}
+  <div class="buttons">
+  <form action="/{{this.data.recipe._id}}" method="post">
+    <button class="btn btn-primary" type="submit">Order Again</button>
+  </form>
+</div>
+  {{else}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}" method="post">
     <button class="btn btn-primary" type="submit">Let's cook</button>
   </form>
 </div>
+  {{/if}}
 {{/if}}

@@ -1,0 +1,53 @@
+<section>
+  <div class="header" id="myHeader">
+    <h2>Edit your profile</h2>
+    </div>
+    <div class="container register-form">
+            <div class="form">
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img src="/images/Paso1.jpg" alt="">
+                            </div>
+                            <div class="form-group">
+                                 <label for="name-input">Name:</label>   
+                                <p>{{currentUserInfo.name}}</p>
+                            </div>
+                             <div class="form-group">
+                                 <label for="name-input">Firstname:</label>   
+                                 <p>{{currentUserInfo.firstname}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName-input">Username:</label>
+                                 <p>{{currentUserInfo.username}}</p>
+                            </div>                          
+                                         
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email-input">Email:</label>
+                                <p>{{currentUserInfo.email}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="password-input">Address:</label>
+                                 <p>{{currentUserInfo.address}}</p>
+                            </div>
+                               <div class="form-group">
+                                 <label for="name-input">Postcode:</label>   
+                                <p>{{currentUserInfo.postcode}}</p>
+                            </div>
+                             <div class="form-group">
+                                 <label for="name-input">City:</label>   
+                                 <p>{{currentUserInfo.city}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName-input">Phone:</label>
+                                 <p>{{currentUserInfo.phone}}</p>
+                            </div>  
+                        </div>
+                    <button href="/profile/edit-profile" type="button" class="btnSubmit">Edit</button>
+                </div>
+            </div>
+        </div>
+    </section>

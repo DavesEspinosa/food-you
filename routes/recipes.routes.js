@@ -125,7 +125,7 @@ router.post("/:id", async (req, res, next) => {
       res.redirect(`/recipe/${id}`);
       return;
     }
-    
+
     await User.updateOne(
       { _id },
       { $push: { cartList: req.params.id } },
@@ -133,7 +133,7 @@ router.post("/:id", async (req, res, next) => {
     );
 
     req.session.currentUser = await User.findOne({ _id });
-    console.log("Usuario actualizado: ", req.session.currentUser);
+    console.log("Usuario actualizado:", req.session.currentUser);
     res.redirect(`/recipe/${id}`);
   } catch (error) {
     console.log(error);
