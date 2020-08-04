@@ -1,4 +1,4 @@
-{{#if this.recipe.author}}
+{{#if this.data.author}}
 <div class="header" id="myHeader">
   <h1>{{currentUserInfo.name}} Recipes</h1>
 </div>
@@ -9,30 +9,30 @@
 {{/if}}
 
 <div class="card mb-3" id="detail">
-  <img src="{{this.recipe.image}}" class="card-img-top" alt="">
+  <img src="{{this.data.recipe.image}}" class="card-img-top" alt="">
   <div class="card-body">
-    <h5 class="card-title">{{this.recipe.title}}</h5>
-    <p class="card-text">{{this.recipe.inspiration}}</p>
-    <p class="card-text"><small class="text-muted">{{this.recipe.ingredients}}</small></p>
+    <h5 class="card-title">{{this.data.recipe.title}}</h5>
+    <p class="card-text">{{this.data.recipe.inspiration}}</p>
+    <p class="card-text"><small class="text-muted">{{this.data.recipe.ingredients}}</small></p>
 
-    <p class="card-text"><small class="text-muted">{{this.recipe.duration}}</small></p>
+    <p class="card-text"><small class="text-muted">{{this.data.recipe.duration}}</small></p>
 
-    {{#if this.recipe.video}}
-    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.recipe.video}}"
+    {{#if this.data.isSell}}
+    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
     {{/if}}
   </div>
 </div>
-{{#if this.recipe.author}}
+{{#if this.data.author}}
 <div class="buttons">
-  <form action="/{{this.recipe._id}}/delete" method="post">
+  <form action="/{{this.data.recipe._id}}/delete" method="post">
     <button class="btn btn-danger" type="submit">Delete</button>
   </form>
 </div>
 {{else}}
 <div class="buttons">
-  <form action="/{{this.recipe._id}}" method="post">
+  <form action="/{{this.data.recipe._id}}" method="post">
     <button class="btn btn-primary" type="submit">Let's cook</button>
   </form>
 </div>
