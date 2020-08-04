@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Recipe = require("../models/recipe.model");
-
+const User = require("../models/user.model");
 
 router.use((req, res, next) => {
   if (req.session.currentUser) {
@@ -52,7 +52,7 @@ router.post("/add-recipe", async (req, res, next) => {
     //req.body para sacar video
     //crear un arrow function de extractkey
     const { video } = req.body;
-    const key =  (video) => {
+    const key = (video) => {
       let arr = [...video];
       let result = "";
       if (arr.length > 43) {
@@ -80,7 +80,24 @@ router.post("/add-recipe", async (req, res, next) => {
 router.get("/recipe/:id", async (req, res, next) => {
   try {
     const recipe = await Recipe.findById({ _id: req.params.id });
-    console.log(recipe);
+    res.render("recipes/recipe-details", { recipe });
+  } catch (error) {
+    console.log(error);
+    next(error);
+    return;
+  }
+});
+
+router.post("/:id", async (req, res, next) => {
+  try {
+    //sacar el currentuser
+    const { _id } = req.session.currentUser;
+    //del req.params recipe id
+    const { id } = req.params;
+    //updateas ese id al cartlist de user
+    await User.findByIdAndUpdate(_id, { cartList: id }, { new: true });
+    
+    const recipe = await Recipe.findById({ _id: id });
     res.render("recipes/recipe-details", { recipe });
   } catch (error) {
     console.log(error);
