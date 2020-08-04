@@ -12,7 +12,7 @@ const userSchema = new Schema({
   city: {type:String, required:true},
   phone: {type:String, required:true},
   profilePicture: { type: String }, // agregar url public image profile picture para el default
-  cartList: [ { type : Schema.Types.ObjectId, ref: 'Recipe' } ],
+  cartList: [ { type : Schema.Types.ObjectId, ref: 'Recipe'} ],
 },{
   timestamps: {
     createdAt: "created_at",
