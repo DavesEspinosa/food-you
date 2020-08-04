@@ -5,7 +5,7 @@
 
 
 <div class="signup-container">
-  <form action="/signup" method="post" class="signup-form">
+  <form action="/signup" method="post" class="signup-form" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name-input">Name:</label>
       <input class="form-control" type="text" name="name" id="name-input">
@@ -54,7 +54,7 @@
 
     <div class="form-group">
       <label for="profilePicture-input">Profile picture:</label>
-      <input class="form-control" type="text" name="profilePicture" id="profilePicture-input">
+      <input class="form-control" type="file" name="profilePicture" id="profilePicture-input">
     </div>
 
     <button class="signup-button">Sign up</button>

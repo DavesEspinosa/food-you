@@ -1,83 +1,93 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
+const express = require("express");
+const bcrypt = require("bcryptjs");
 
-const User = require('../models/user.model');
+const User = require("../models/user.model");
 
 const router = express.Router();
 const bcrytpSalt = 15;
 
-router.get('/signup', (req, res, next) => {
-  res.render('auth/signup', { errorMessage: ''});
+const uploadCloud = require("../config/cloudinary.js");
+
+router.get("/signup", (req, res, next) => {
+  res.render("auth/signup", { errorMessage: "" });
 });
 
-router.post('/signup', async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    if(email === '' || password === ''){
-      res.render('auth/signup', { errorMessage: 'Enter email and password'} );
-      return;
-    }
-    
-    const isUser = await User.findOne({ email });
-    if(isUser){
-      res.render('auth/signup', { errorMessage: 'This user already exists'} );
-      return;
-    }
+router.post(
+  "/signup",
+  uploadCloud.single("profilePicture"),
+  async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+      const image_url = req.file.url;
+      if (email === "" || password === "") {
+        res.render("auth/signup", { errorMessage: "Enter email and password" });
+        return;
+      }
 
-    const salt = bcrypt.genSaltSync(bcrytpSalt);
-    const hashedPassword = bcrypt.hashSync(password, salt);
+      const isUser = await User.findOne({ email });
+      if (isUser) {
+        res.render("auth/signup", { errorMessage: "This user already exists" });
+        return;
+      }
 
-    await User.create({
-      ...req.body,
-      password: hashedPassword,
-    });
-    res.redirect('/login')
-  } catch (error) {
-    res.render('auth/signup', { errorMessage: "Ops!! Error while creating account. Please try again."})
+      const salt = bcrypt.genSaltSync(bcrytpSalt);
+      const hashedPassword = bcrypt.hashSync(password, salt);
+
+      await User.create({
+        ...req.body,
+        password: hashedPassword,
+        image_url,
+      });
+      res.redirect("/login");
+    } catch (error) {
+      res.render("auth/signup", {
+        errorMessage: "Ops!! Error while creating account. Please try again.",
+      });
+    }
   }
+);
+
+router.get("/login", (req, res, next) => {
+  res.render("auth/login", { errorMessage: "" });
 });
 
-router.get('/login', (req, res, next) => {
-  res.render('auth/login', { errorMessage: ''});
-});
+router.post("/login", async (req, res, next) => {
+  const { email, password } = req.body;
 
-router.post('/login', async (req, res, next) => {
-  const {email , password } = req.body;
-
-  if (email === '' || password === '') {
-    res.render('auth/login', {
-      errorMessage: 'Enter both email and password to log in.'
+  if (email === "" || password === "") {
+    res.render("auth/login", {
+      errorMessage: "Enter both email and password to log in.",
     });
     return;
   }
 
   try {
-    const user = await User.findOne({email});
-    if(!user){
-      res.render('auth/login', {
-        errorMessage: `There isn't an account with email ${email}.`
+    const user = await User.findOne({ email });
+    if (!user) {
+      res.render("auth/login", {
+        errorMessage: `There isn't an account with email ${email}.`,
       });
       return;
     }
     // magic, como compara un hash salteado x veces y te lo mira con un string...
     if (!bcrypt.compareSync(password, user.password)) {
-      res.render('auth/login', {
-        errorMessage: 'Invalid password.'
+      res.render("auth/login", {
+        errorMessage: "Invalid password.",
       });
       return;
     }
     // GUARDAMOS LA SESSION EN CURRENTUSER ¡¡HABEMUS "PERSISTENCIA" DE DATOS!!
     req.session.currentUser = user;
-    res.redirect('/list-recipes');
+    res.redirect("/list-recipes");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 });
 
-router.get('/logout', (req, res, next) => {
+router.get("/logout", (req, res, next) => {
   // si no existe un usuario en la sesion
   if (!req.session.currentUser) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
   // destruyes la sesion
@@ -87,7 +97,7 @@ router.get('/logout', (req, res, next) => {
       return;
     }
     // redirecciona cuando haya terminado de destruir la sesion
-    res.redirect('/');
+    res.redirect("/");
   });
 });
 
