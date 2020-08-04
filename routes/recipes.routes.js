@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Recipe = require("../models/recipe.model");
-
+const User = require("../models/user.model");
 
 router.use((req, res, next) => {
   if (req.session.currentUser) {
@@ -52,7 +52,7 @@ router.post("/add-recipe", async (req, res, next) => {
     //req.body para sacar video
     //crear un arrow function de extractkey
     const { video } = req.body;
-    const key =  (video) => {
+    const key = (video) => {
       let arr = [...video];
       let result = "";
       if (arr.length > 43) {
@@ -79,9 +79,64 @@ router.post("/add-recipe", async (req, res, next) => {
 
 router.get("/recipe/:id", async (req, res, next) => {
   try {
+    const { cartList } = req.session.currentUser;
+    
+    const { id } = req.params;
+    
+    let isSell = false;
+    
+    cartList.map(recipe => {
+      if(recipe === id){
+        isSell=true;
+      }
+    });
+
     const recipe = await Recipe.findById({ _id: req.params.id });
-    console.log(recipe);
-    res.render("recipes/recipe-details", { recipe });
+
+    let data = {
+      recipe,
+      isSell
+    }
+
+    res.render("recipes/recipe-details", { data });
+  } catch (error) {
+    console.log(error);
+    next(error);
+    return;
+  }
+});
+
+router.post("/:id", async (req, res, next) => {
+  try {
+    const { _id, cartList } = req.session.currentUser;
+    console.log('Usuario viejo: ', req.session.currentUser)
+    
+    const { id } = req.params;
+    
+    let isSell = false;
+    
+    cartList.map(recipe => {
+      if(recipe === id){
+        isSell=true;
+      }
+    });
+    
+    console.log('isSell: ', isSell);
+    if(isSell){
+      res.redirect(`/recipe/${id}`);
+      return;
+    }
+    
+    await User.updateOne(
+      {_id},
+      { $push: { cartList: req.params.id }},
+      { new: true }
+      );
+
+    req.session.currentUser = await User.findOne({_id});
+    console.log('Usuario actualizado: ', req.session.currentUser)
+    res.redirect(`/recipe/${id}`);
+
   } catch (error) {
     console.log(error);
     next(error);
