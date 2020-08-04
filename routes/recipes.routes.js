@@ -79,8 +79,26 @@ router.post("/add-recipe", async (req, res, next) => {
 
 router.get("/recipe/:id", async (req, res, next) => {
   try {
+    const { cartList } = req.session.currentUser;
+    
+    const { id } = req.params;
+    
+    let isSell = false;
+    
+    cartList.map(recipe => {
+      if(recipe === id){
+        isSell=true;
+      }
+    });
+
     const recipe = await Recipe.findById({ _id: req.params.id });
-    res.render("recipes/recipe-details", { recipe });
+
+    let data = {
+      recipe,
+      isSell
+    }
+
+    res.render("recipes/recipe-details", { data });
   } catch (error) {
     console.log(error);
     next(error);
