@@ -95,7 +95,7 @@ router.post("/:id", async (req, res, next) => {
     //del req.params recipe id
     const { id } = req.params;
     //updateas ese id al cartlist de user
-    await User.findByIdAndUpdate(_id, { cartList: id }, { new: true });
+    await User.findByIdAndUpdate(_id, { $push:{cartList: id }}, { new: true });
     
     const recipe = await Recipe.findById({ _id: id });
     res.render("recipes/recipe-details", { recipe });
