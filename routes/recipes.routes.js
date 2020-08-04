@@ -90,15 +90,35 @@ router.get("/recipe/:id", async (req, res, next) => {
 
 router.post("/:id", async (req, res, next) => {
   try {
-    //sacar el currentuser
-    const { _id } = req.session.currentUser;
-    //del req.params recipe id
-    const { id } = req.params;
-    //updateas ese id al cartlist de user
-    await User.findByIdAndUpdate(_id, { cartList: id }, { new: true });
+    const { _id, cartList } = req.session.currentUser;
+    console.log('Usuario viejo: ', req.session.currentUser)
     
-    const recipe = await Recipe.findById({ _id: id });
-    res.render("recipes/recipe-details", { recipe });
+    const { id } = req.params;
+    
+    let isSell = false;
+    
+    cartList.map(recipe => {
+      if(recipe === id){
+        isSell=true;
+      }
+    });
+    
+    console.log('isSell: ', isSell);
+    if(isSell){
+      res.redirect(`/recipe/${id}`);
+      return;
+    }
+    
+    await User.updateOne(
+      {_id},
+      { $push: { cartList: req.params.id }},
+      { new: true }
+      );
+
+    req.session.currentUser = await User.findOne({_id});
+    console.log('Usuario actualizado: ', req.session.currentUser)
+    res.redirect(`/recipe/${id}`);
+
   } catch (error) {
     console.log(error);
     next(error);
