@@ -111,16 +111,15 @@ router.post("/:id", async (req, res, next) => {
       res.redirect(`/recipe/${id}`);
       return;
     }
-    
+
     await User.updateOne(
-      {_id},
-      { $push: { cartList: req.params.id }},
+      { _id },
+      { $push: { cartList: req.params.id } },
       { new: true }
     );
 
     req.session.currentUser = await User.findOne({_id});
     res.redirect(`/recipe/${id}`);
-
   } catch (error) {
     console.log(error);
     next(error);
