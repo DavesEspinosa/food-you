@@ -1,5 +1,7 @@
+
+
 <div class="header" id="myHeader">
-  <h1>Your recipes</h1>
+  <h1>{{currentUserInfo.name}} Recipes</h1>
 </div>
 
 <section class="content">
@@ -11,8 +13,10 @@
   </div>
 </section>
 
+
 {{#if errorMessage}}
   <p class="error-message">
     Ops! Seems you haven't own recipes.
   </p>
 {{/if}}
+
