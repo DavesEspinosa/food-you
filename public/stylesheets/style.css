@@ -5,6 +5,8 @@ a {
 .footer {
   margin-bottom: 0px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .presentation {
@@ -50,11 +52,13 @@ a {
 }
 .explanation {
   padding: 2em;
+  margin-bottom: 5em;
 }
 .card {
   background-color: none;
   border: none;
 }
+
 .card-title {
   text-align: center;
 }
@@ -67,7 +71,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 2%;
+  margin: 2% 2% 8% 2%;
 }
 #card-list {
   margin-right: 20px;
@@ -101,26 +105,29 @@ a {
 .sticky + .content {
   padding-top: 102px;
 }
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
+  margin-bottom: 8em;
 }
 .signup-container,
-.add-recipe-container{
+.add-recipe-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8em;
+
+}
+
+.login-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form{
+.login-form {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -131,15 +138,21 @@ a {
 }
 
 .signup-form,
-.add-recipe-form{
+.add-recipe-form {
   min-width: 450px;
   display: flex;
   flex-direction: column;
 }
 .signup-button,
-.add-recipe-button{
+.add-recipe-button {
   align-self: center;
   width: 40%;
+}
+#detail{
+  
+}
+
+.iframe {
 }
 
 @media (min-width: 300px) and (max-width: 550px) {

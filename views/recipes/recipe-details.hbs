@@ -1,8 +1,14 @@
+{{#if this.recipe.author}}
 <div class="header" id="myHeader">
-  <h1>My Header</h1>
+  <h1>{{currentUserInfo.name}} Recipes</h1>
 </div>
+{{else}}  
+<div class="header" id="myHeader">
+  <h1>Food You Recipes</h1>
+</div>
+ {{/if}}
 
-<div class="card mb-3">
+<div class="card mb-3" id="detail">
   <img src="{{this.recipe.image}}" class="card-img-top" alt="">
    <div class="card-body">
     <h5 class="card-title">{{this.recipe.title}}</h5>
@@ -11,16 +17,21 @@
 
     <p class="card-text"><small class="text-muted">{{this.recipe.duration}}</small></p>
     
-    <iframe width="560" height="315" src="{{this.recipe.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
+    {{#if this.recipe.video}}
+    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.recipe.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   {{/if}}
   </div>
 </div>
 {{#if this.recipe.author}}
 <div class="buttons">
-<a class="btn btn-danger" href="/:id/delete" role="button">Delete</a>
+  <form action="/{{this.recipe._id}}/delete" method="post">
+      <button  class="btn btn-danger"type="submit">Delete</button>
+  </form>
 </div>
-{{else}}
+{{else}}  
 <div class="buttons">
-<a class="btn btn-primary" href="/" role="button">Let's cook</a>
+   <form action="/{{this.recipe._id}}" method="post">
+      <button  class="btn btn-primary"type="submit">Let's cook</button>
+   </form>
 </div>
 {{/if}}
