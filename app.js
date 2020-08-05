@@ -13,7 +13,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 mongoose
-  .connect('mongodb://localhost/food-you', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -48,13 +48,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(session({
-  secret: 'Your cook is only yours',
+  secret: process.env.SESSION_SECRET,
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { maxAge: 6000000 }, // una horita poe ejemplo
   store: new MongoStore ({
     mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
+    ttl:60 * 60 * 24 * 7, 
   })
 }));
 
