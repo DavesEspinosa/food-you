@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>{{title}}</title>
- 
+
 
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -38,13 +38,10 @@
       <div id="dismiss">
         <i class="fas fa-arrow-left"></i>
       </div>
-
       <div class="sidebar-header">
-
-             <div class="form-group">
-              <img src="{{currentUserInfo.profilePicture}}" alt="">
-            </div>
-{{!-- <h3>{{currentUserInfo.username}}</h3> --}}
+        <div class="form-group">
+          <img src="{{currentUserInfo.profilePicture}}" alt="">
+        </div>
       </div>
       {{#if isUserLoggedIn}}
       <ul class="list-unstyled components">

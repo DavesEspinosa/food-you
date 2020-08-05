@@ -26,9 +26,10 @@ router.get("/profile", (req, res, next) => {
   res.render("profile/user-profile");
 });
 
+
 router.get("/edit-profile", (req, res, next) => {
   res.render("profile/edit-profile");
-});
+}); 
 
 router.post("/edit-profile", 
   uploadCloud.single("profilePicture"),
