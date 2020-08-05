@@ -13,6 +13,7 @@ router.use((req, res, next) => {
   res.redirect("/");
 });
 
+
 router.get("/list-recipes", async (req, res, next) => {
   try {
     const recipes = await Recipe.find({ author: null });

@@ -173,8 +173,7 @@ a {
 .form-control{
     border-radius:1.5rem;
 }
-.btnSubmit
-{
+.btnSubmit{
     border:none;
     border-radius:1.5rem;
     padding: 1%;
@@ -184,12 +183,18 @@ a {
     color: #fff;
 }
 .container{
-  padding-top: 5%;
-  margin-bottom: 10%;
+  padding-top: 2%;
+  margin-bottom: 5em;
 }
 .form-group img{
   width: 5em;
   height: 5em;
+}
+
+@media (min-width: 300px) and (max-width: 450px) {
+.btnSubmit{
+  width: 60%;
+}
 }
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
