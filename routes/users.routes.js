@@ -55,6 +55,7 @@ router.post("/edit-profile",
             return;
           }
           profileUpdate[key]=user[key];
+          return;
         }
 
         if(key === 'password' && value !== ''){
@@ -83,7 +84,7 @@ router.post("/edit-profile",
     });
     console.log('Este es el updateUser'. profileUpdate)
 
-    await User.update(
+    await User.updateOne(
       { _id },
       { $set: { ...profileUpdate } },
       { new: true}
