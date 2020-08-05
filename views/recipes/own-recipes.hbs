@@ -1,0 +1,22 @@
+
+
+<div class="header" id="myHeader">
+  <h1>{{currentUserInfo.name}} Recipes</h1>
+</div>
+
+<section class="content">
+  <a href="/add-recipe">Add you recipes</a>
+  <div class="list-recipes-container">
+    {{#each recipes}}
+      {{> cardRecipe this}}
+    {{/each}}
+  </div>
+</section>
+
+
+{{#if errorMessage}}
+  <p class="error-message">
+    Ops! Seems you haven't own recipes.
+  </p>
+{{/if}}
+
