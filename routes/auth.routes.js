@@ -18,7 +18,8 @@ router.post(
   async (req, res, next) => {
     try {
       const { email, password } = req.body;
-      const image_url = req.file.url;
+      const profilePicture = req.file.url;
+      console.log(profilePicture);
       if (email === "" || password === "") {
         res.render("auth/signup", { errorMessage: "Enter email and password" });
         return;
@@ -32,13 +33,25 @@ router.post(
 
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
-
-      await User.create({
+      const newUser = new User({
         ...req.body,
         password: hashedPassword,
-        image_url,
+        profilePicture: profilePicture,
       });
-      res.redirect("/login");
+      newUser
+        .save()
+        .then(() => {
+          res.redirect("/login");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      /*  await User.create({
+        ...req.body,
+        password: hashedPassword,
+        profilePicture:profilePicture,
+      }); */
     } catch (error) {
       res.render("auth/signup", {
         errorMessage: "Ops!! Error while creating account. Please try again.",
