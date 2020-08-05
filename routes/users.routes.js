@@ -12,8 +12,8 @@ router.get("/profile", function (req, res, next) {
   res.render("profile/user-profile");
 });
 
-router.get("/edit-profile", function (req, res, next) {
+/* router.get("/edit-profile", function (req, res, next) {
   res.render("profile/edit-profile");
-});
+}); */
 
 module.exports = router;

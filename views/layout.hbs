@@ -38,10 +38,10 @@
       <div id="dismiss">
         <i class="fas fa-arrow-left"></i>
       </div>
-
       <div class="sidebar-header">
-
-        <h3>{{currentUserInfo.username}}</h3>
+        <div class="form-group">
+           <img src="{{currentUserInfo.profilePicture}}" alt="">
+        </div>
       </div>
       {{#if isUserLoggedIn}}
       <ul class="list-unstyled components">
