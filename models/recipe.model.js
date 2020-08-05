@@ -14,7 +14,6 @@ const recipeSchema = new Schema(
     video: { type: String},
     image: {
       type: String,
-      required: true,
     },
     duration: { type: Number, min: 0, max: 1000 },
   },
