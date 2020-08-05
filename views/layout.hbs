@@ -41,7 +41,10 @@
 
       <div class="sidebar-header">
 
-        <h3>{{currentUserInfo.username}}</h3>
+             <div class="form-group">
+              <img src="{{currentUserInfo.profilePicture}}" alt="">
+            </div>
+{{!-- <h3>{{currentUserInfo.username}}</h3> --}}
       </div>
       {{#if isUserLoggedIn}}
       <ul class="list-unstyled components">

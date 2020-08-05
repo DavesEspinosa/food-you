@@ -17,14 +17,19 @@
 
     <p class="card-text"><small class="text-muted">{{this.data.recipe.duration}}</small></p>
 
-    {{#if this.data.isSell}}
+    {{#if this.data.isSell}}  
+    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    {{/if}}
+    {{#if this.data.recipe.author}}  
     <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
     {{/if}}
   </div>
 </div>
-{{#if this.data.recipe.author}}
+{{#if this.data.recipe.author}} 
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}/delete" method="post">
     <button class="btn btn-danger" type="submit">Delete</button>
