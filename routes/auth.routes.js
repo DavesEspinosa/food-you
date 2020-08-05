@@ -18,8 +18,8 @@ router.post(
   async (req, res, next) => {
     try {
       const { email, password } = req.body;
-      const profilePicture = req.file.url;
-      console.log(profilePicture);
+      let profilePicture = process.env.DEFAULT_PICTURE;
+
       if (email === "" || password === "") {
         res.render("auth/signup", { errorMessage: "Enter email and password" });
         return;
@@ -31,13 +31,18 @@ router.post(
         return;
       }
 
+      if(req.body.profilePicture){
+        profilePicture = req.file.url;
+      }
+
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
       const newUser = new User({
         ...req.body,
         password: hashedPassword,
-        profilePicture: profilePicture,
+        profilePicture,
       });
+
       newUser
         .save()
         .then(() => {

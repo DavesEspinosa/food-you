@@ -1,11 +1,13 @@
 const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/user.model");
 
-const router = express.Router();
 const bcrytpSalt = 15;
-  
+
+const uploadCloud = require("../config/cloudinary.js");
+
 router.use((req, res, next) => {
   if (req.session.currentUser) {
     next();
@@ -29,11 +31,16 @@ router.get("/edit-profile", (req, res, next) => {
 });
 
 router.post("/edit-profile", 
-async (req, res, next) => {
+  uploadCloud.single("profilePicture"),
+  async (req, res, next) => {
   try {
     const user = req.session.currentUser;
+    console.log('Este es el currentUser viejo:', user)
     const { _id } = user;
+
+
     let profileUpdate = {}
+
     Object.entries(req.body).map( async(valueInput) => {
       try {
         let key = valueInput[0]; // campo
@@ -47,28 +54,43 @@ async (req, res, next) => {
             return;
           }
           profileUpdate[key]=user[key];
+          return;
         }
+
         if(key === 'password' && value !== ''){
           const salt = bcrypt.genSaltSync(bcrytpSalt);
           const hashedPassword = bcrypt.hashSync(value, salt);
           profileUpdate[key]=hashedPassword;
           return;
         }
+        
+        if(key === 'profilePicture' && value !== ''){
+          console.log('este es el profile dentro del map: ', profilePicture)
+          console.log(`Esta es la key del campo profilePicture: ${key}`)
+          profileUpdate[key]=req.file.url;
+          return;
+        }
+
         if (value === "") {
           profileUpdate[key]=user[key];
           return;
         }
+  
         profileUpdate[key]=value;
       } catch (error) {
         console.log(error)
       }
     });
+    console.log('Este es el updateUser'. profileUpdate)
+
     await User.updateOne(
       { _id },
       { $set: { ...profileUpdate } },
       { new: true}
     );
+
     req.session.currentUser = await User.findById({ _id });
+    console.log('Este es el user nuevo: ', req.session.currentUser)
     res.redirect("/profile");
   } catch (error) {
     console.log(error);
