@@ -14,7 +14,7 @@ router.get("/signup", (req, res, next) => {
 
 router.post(
   "/signup",
-  uploadCloud.single("profile"),
+  uploadCloud.single("profilePicture"),
   async (req, res, next) => {
     try {
       const { email, password, } = req.body;

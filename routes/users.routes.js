@@ -39,12 +39,12 @@ router.post("/edit-profile",
     console.log('Este es el currentUser viejo:', user)
     const { _id } = user;
 
-
     let profileUpdate = {}
 
     Object.entries(req.body).map( valueInput => {
       let key = valueInput[0]; // campo
       let value = valueInput[1]; // valor del campo
+      console.log(`key: ${key} value: ${value}`)
 
       if(key === 'password' && value !== ''){
         const salt = bcrypt.genSaltSync(bcrytpSalt);
@@ -53,26 +53,27 @@ router.post("/edit-profile",
         return;
       }
 
-      if(key === 'profilePicture' && value !== '' || value !== null){
-        profileUpdate[key]=req.file.url;
+      if (value !== "") {
+        profileUpdate[key]=value;
         return;
       }
-
-      if (value === "") {
-        profileUpdate[key]=user[key];
-        return;
-      }
+      
+      return;
     });
 
-    if(req.body.email !== ''){
-      const isUser = await User.find({email: value});
-      console.log('este es el isUser',isUser)
-      if(isUser.length!==0){
+    if(profileUpdate.email){
+
+      const isUser = await User.findOne({ email: profileUpdate.email });
+      console.log('este es el isUser', isUser)
+      if(isUser){
         errorMessage = 'This user already exists';
         res.render('profile/edit-profile', { errorMessage })
         return;
       }
-      profileUpdate[email]=req.body.email;
+    }
+
+    if(typeof req.file !== 'undefined'){
+      profileUpdate['profilePicture'] = req.file.url;
     }
 
     console.log('Este es el profileUpdate', profileUpdate)

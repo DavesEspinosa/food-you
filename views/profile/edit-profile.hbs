@@ -63,5 +63,13 @@
           <button class="btnSubmit">Save your changes</button>
         </div>
     </form>
+
+
+  {{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+
   </div>
 </section>
