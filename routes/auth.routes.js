@@ -14,11 +14,12 @@ router.get("/signup", (req, res, next) => {
 
 router.post(
   "/signup",
-  uploadCloud.single("profilePicture"),
+  uploadCloud.single("profile"),
   async (req, res, next) => {
     try {
-      const { email, password } = req.body;
-      let profilePicture = process.env.DEFAULT_PICTURE;
+      const { email, password, } = req.body;
+      console.log('Este es el body ', req.body)
+      let profilePicture = '';
 
       if (email === "" || password === "") {
         res.render("auth/signup", { errorMessage: "Enter email and password" });
@@ -30,9 +31,13 @@ router.post(
         res.render("auth/signup", { errorMessage: "This user already exists" });
         return;
       }
+      
+      console.log(typeof req.file)
 
-      if(req.body.profilePicture){
+      if(typeof req.file !== 'undefined'){
         profilePicture = req.file.url;
+      }else{
+        profilePicture = process.env.DEFAULT_PICTURE;
       }
 
       const salt = bcrypt.genSaltSync(bcrytpSalt);
@@ -52,12 +57,8 @@ router.post(
           console.log(error);
         });
 
-      /*  await User.create({
-        ...req.body,
-        password: hashedPassword,
-        profilePicture:profilePicture,
-      }); */
     } catch (error) {
+      console.log(error)
       res.render("auth/signup", {
         errorMessage: "Ops!! Error while creating account. Please try again.",
       });

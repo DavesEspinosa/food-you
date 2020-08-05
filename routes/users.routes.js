@@ -42,47 +42,40 @@ router.post("/edit-profile",
 
     let profileUpdate = {}
 
-    Object.entries(req.body).map( async(valueInput) => {
-      try {
-        let key = valueInput[0]; // campo
-        let value = valueInput[1]; // valor del campo
-  
-        if(key === 'email' && value !== ''){
-          const isUser = await User.findOne({key});
-          if(isUser){
-            errorMessage = 'This user already exists';
-            res.render('/edit-profile', { errorMessage })
-            return;
-          }
-          profileUpdate[key]=user[key];
-          return;
-        }
+    Object.entries(req.body).map( valueInput => {
+      let key = valueInput[0]; // campo
+      let value = valueInput[1]; // valor del campo
 
-        if(key === 'password' && value !== ''){
-          const salt = bcrypt.genSaltSync(bcrytpSalt);
-          const hashedPassword = bcrypt.hashSync(value, salt);
-          profileUpdate[key]=hashedPassword;
-          return;
-        }
-        
-        if(key === 'profilePicture' && value !== ''){
-          console.log('este es el profile dentro del map: ', profilePicture)
-          console.log(`Esta es la key del campo profilePicture: ${key}`)
-          profileUpdate[key]=req.file.url;
-          return;
-        }
+      if(key === 'password' && value !== ''){
+        const salt = bcrypt.genSaltSync(bcrytpSalt);
+        const hashedPassword = bcrypt.hashSync(value, salt);
+        profileUpdate[key]=hashedPassword;
+        return;
+      }
 
-        if (value === "") {
-          profileUpdate[key]=user[key];
-          return;
-        }
-  
-        profileUpdate[key]=value;
-      } catch (error) {
-        console.log(error)
+      if(key === 'profilePicture' && value !== '' || value !== null){
+        profileUpdate[key]=req.file.url;
+        return;
+      }
+
+      if (value === "") {
+        profileUpdate[key]=user[key];
+        return;
       }
     });
-    console.log('Este es el updateUser'. profileUpdate)
+
+    if(req.body.email !== ''){
+      const isUser = await User.find({email: value});
+      console.log('este es el isUser',isUser)
+      if(isUser.length!==0){
+        errorMessage = 'This user already exists';
+        res.render('profile/edit-profile', { errorMessage })
+        return;
+      }
+      profileUpdate[email]=req.body.email;
+    }
+
+    console.log('Este es el profileUpdate', profileUpdate)
 
     await User.updateOne(
       { _id },
