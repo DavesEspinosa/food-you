@@ -86,6 +86,7 @@ const users = [
     city: "a",
     phone: "admin",
     cartList: [],
+    profilePicture: '',
   },
 ];
 
