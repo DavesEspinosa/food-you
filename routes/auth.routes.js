@@ -21,21 +21,34 @@ router.post(
 
       let profilePicture = '';
 
+      let errorMessage = {}
+
       if (email === "" || password === "") {
-        res.render("auth/signup", { errorMessage: "Enter email and password" });
-        return;
+        errorMessage.generic = "Enter email and password";
       }
 
       const isUser = await User.findOne({ email });
       if (isUser) {
-        res.render("auth/signup", { emailMessage: "This user already exists" });
-        return;
+        errorMessage.emailExists = "This user already exists";
       }
 
     if(password.length<8) {
-        res.render("auth/signup", { passwordMessage: "Password must contain at least 8 characters" });
+        errorMessage.passwordMessage = "Password must contain at least 8 characters";
+    }
+    // address city postCode phone
+
+    Object.entries(req.body).map( valueInput => {
+      let key = valueInput[0]; // campo
+      let value = valueInput[1]; // valor del campo
+      console.log(`key: ${key} value: ${value}`)
+
+      if (value === "") {
+        errorMessage[key]="Mandatoy";
         return;
       }
+
+      return;
+    });
 
       // const passwordValidation = pass => /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(pass);
       // console.log(passwordValidation(password))
@@ -55,30 +68,11 @@ router.post(
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
-      await User.create({
-        ...req.body,
-          password: hashedPassword,
-          profilePicture,
-      });
-      
-      req.session.currentUser = await User.findOne({ email });
-      
-      res.redirect("/");
-        // const newUser = new User({
-        //   ...req.body,
-        //   password: hashedPassword,
-        //   profilePicture,
-        // });
-
-      // newUser
-      //   .save()
-      //   .then(() => {
-      //     res.redirect("/login");
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
-
+      if(errorMessage.length!==0){
+        console.log('hay errores', errorMessage)
+        res.render("auth/signup", { errorMessage });
+        return;
+      }
 
     } catch (error) {
       console.log(error)
