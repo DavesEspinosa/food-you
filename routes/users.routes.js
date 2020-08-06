@@ -39,7 +39,7 @@ router.post("/edit-profile",
 
     const { _id } = user;
 
-    const passwordValidation = pass => /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(pass);
+    
 
     let profileUpdate = {}
 
@@ -50,8 +50,8 @@ router.post("/edit-profile",
 
       if(key === 'password' && value !== ''){
 
-        if(!passwordValidation(password)) {
-          res.render('profile/edit-profile', { errorMessage: "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character" });
+        if(key.length<8) {
+          res.render('profile/edit-profile', { errorMessage: "Password must contain at least 8 characters." });
           return;
         }
 

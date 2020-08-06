@@ -37,6 +37,8 @@ router.post(
         return;
       }
 
+      // const passwordValidation = pass => /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(pass);
+      // console.log(passwordValidation(password))
       // console.log('esta es la pass', password)
       // console.log(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/));
       // if(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
