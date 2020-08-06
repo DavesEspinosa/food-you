@@ -18,7 +18,7 @@ router.post(
   async (req, res, next) => {
     try {
       const { email, password, } = req.body;
-      console.log('Este es el body ', req.body)
+
       let profilePicture = '';
 
       if (email === "" || password === "") {
@@ -28,11 +28,21 @@ router.post(
 
       const isUser = await User.findOne({ email });
       if (isUser) {
-        res.render("auth/signup", { errorMessage: "This user already exists" });
+        res.render("auth/signup", { emailMessage: "This user already exists" });
         return;
       }
-      
-      console.log(typeof req.file)
+
+    if(password.length<8) {
+        res.render("auth/signup", { passwordMessage: "Password must contain at least 8 characters" });
+        return;
+      }
+
+      // console.log('esta es la pass', password)
+      // console.log(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/));
+      // if(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
+      //   res.render("auth/signup", { passwordMessage: "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character" });
+      //   return;
+      // }
 
       if(typeof req.file !== 'undefined'){
         profilePicture = req.file.url;
@@ -42,20 +52,31 @@ router.post(
 
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      const newUser = new User({
-        ...req.body,
-        password: hashedPassword,
-        profilePicture,
-      });
 
-      newUser
-        .save()
-        .then(() => {
-          res.redirect("/login");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      await User.create({
+        ...req.body,
+          password: hashedPassword,
+          profilePicture,
+      });
+      
+      req.session.currentUser = await User.findOne({ email });
+      
+      res.redirect("/");
+        // const newUser = new User({
+        //   ...req.body,
+        //   password: hashedPassword,
+        //   profilePicture,
+        // });
+
+      // newUser
+      //   .save()
+      //   .then(() => {
+      //     res.redirect("/login");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+
 
     } catch (error) {
       console.log(error)
