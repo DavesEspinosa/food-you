@@ -6,7 +6,7 @@ const Recipe = require("../models/recipe.model");
 const User = require("../models/user.model");
 
 const dbName = "food-you";
-mongoose.connect(`mongodb://localhost/${dbName}`, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
