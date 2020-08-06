@@ -1,6 +1,6 @@
 <section>
   <div class="header" id="myHeader">
-    <h2>Edit your profile</h2>
+    <h2>{{currentUserInfo.name}} Profile</h2>
   </div>
   <div class="container register-form">
     <div class="form">
@@ -46,7 +46,10 @@
               <p>{{currentUserInfo.phone}}</p>
             </div>
           </div>
-          <button type="button" class="btnSubmit"><a href="/edit-profile">Edit</a></button>
+           <div id="button"> 
+         <a href="/edit-profile"><button type="button" class="btn btn-dark">Edit</button></a>
+          </div>
+        
         </div>
       </div>
     </div>

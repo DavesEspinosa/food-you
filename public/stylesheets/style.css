@@ -1,5 +1,9 @@
+/* 
+family: 
+font-family: 'Nanum Myeongjo', serif;
+ */
 a {
-  color: #00b7ff;
+  color: #d46466;
 }
 
 .footer {
@@ -9,6 +13,11 @@ a {
   bottom: 0;
 }
 
+.card-text {
+  font-family: "Nanum Myeongjo", serif;
+  line-height: 1.3em;
+  text-align: center;
+}
 .presentation {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(/images/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg);
@@ -39,11 +48,13 @@ a {
 .info h3 {
   font-size: 1rem;
   text-align: center;
+  font-family: "Nanum Myeongjo", serif;
 }
 .title p {
   margin: 0;
   font-size: 1.3rem;
   color: white;
+  font-family: "Nanum Myeongjo", serif;
 }
 .info {
   max-width: 500px;
@@ -61,6 +72,10 @@ a {
 
 .card-title {
   text-align: center;
+  color: #d46466;
+}
+.card-title:hover {
+  color: black;
 }
 .card-body {
   text-align: center;
@@ -70,12 +85,12 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 2% 2% 8% 2%;
+  justify-content: space-between;
+  margin: 0% 13% 10% 13%;
 }
 #card-list {
-  margin-right: 20px;
   margin-bottom: 10px;
+  margin-top: 60px;
 }
 
 #img-card-list {
@@ -117,14 +132,16 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 8em;
-
+  margin-top: 2em;
 }
 
 .login-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 8%;
 }
 
 .login-form {
@@ -139,7 +156,7 @@ a {
 
 .signup-form,
 .add-recipe-form {
-  min-width: 450px;
+  min-width: 35%;
   display: flex;
   flex-direction: column;
 }
@@ -148,48 +165,58 @@ a {
   align-self: center;
   width: 40%;
 }
-#detail{
-  
+#detail {
 }
 
 .iframe {
 }
 /* Edit profile */
-.note
-{
-    text-align: center;
-    height: 80px;
-    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-    color: #fff;
-    font-weight: bold;
-    line-height: 80px;
+.note {
+  text-align: center;
+  height: 80px;
+  background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+  color: #fff;
+  font-weight: bold;
+  line-height: 80px;
 }
-.form-content
-{
-    padding: 5%;
-    border: 1px solid #ced4da;
-    margin-bottom: 2%;
+.form-content {
+  padding: 5%;
+  border: 1px solid #ced4da;
+  margin-bottom: 2%;
 }
-.form-control{
-    border-radius:1.5rem;
+.form-control {
+  border-radius: 1.5rem;
 }
-.btnSubmit
-{
-    border:none;
-    border-radius:1.5rem;
-    padding: 1%;
-    width: 20%;
-    cursor: pointer;
-    background: #0062cc;
-    color: #fff;
+.btnSubmit {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1%;
+  width: 20%;
+  cursor: pointer;
+  background: #0062cc;
+  color: #fff;
 }
-.container{
+
+.container {
   padding-top: 5%;
   margin-bottom: 10%;
 }
-.form-group img{
+.container-fluid span {
+  font-size: 1.2em;
+}
+.logo {
+  font-size: 2em;
+}
+.form-group {
+  padding: 0 20px;
+}
+.form-group img {
   width: 5em;
   height: 5em;
+}
+.icon {
+  width: 2em;
+  height: 2em;
 }
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
@@ -198,6 +225,35 @@ a {
   }
   .title h1 {
     font-size: 2em;
+  }
+  .icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .container-fluid span {
+    font-size: 1em;
+  }
+  .logo {
+    font-size: 1.5em;
+  }
+  .header h1{
+    font-size: 2em;
+  }
+  .form-content {
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 30%;
+  }
+}
+@media (min-width: 320px) and (max-width: 780px) {
+  .list-recipes-container {
+    display: flex;
+    margin: 0px 40px;
+    margin-bottom: 15%;
+    justify-content: space-around;
+  }
+  #card-list{
+    margin-bottom: 15%  ;
   }
 }
 @media (min-width: 550px) and (max-width: 780px) {
@@ -209,7 +265,12 @@ a {
     font-size: 2em;
   }
 }
-
-.form-group {
-  padding: 0 20px;
+@media (min-width: 780px) and (max-width: 1440px) {
+  .list-recipes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0% 15% 20% 15%;
+}
 }

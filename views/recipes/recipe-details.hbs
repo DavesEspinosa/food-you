@@ -1,23 +1,27 @@
 {{#if this.data.recipe.author}}
 <div class="header" id="myHeader">
-  <h1>{{currentUserInfo.name}} Recipes</h1>
+  <h1>{{this.data.recipe.title}}</h1>
 </div>
 {{else}}
 <div class="header" id="myHeader">
-  <h1>Food You Recipes</h1>
+  <h1>{{this.data.recipe.title}}</h1>
 </div>
 {{/if}}
 
 <div class="card mb-3" id="detail">
   <img src="{{this.data.recipe.image}}" class="card-img-top" alt="">
   <div class="card-body">
-    <h5 class="card-title">{{this.data.recipe.title}}</h5>
     <p class="card-text">{{this.data.recipe.inspiration}}</p>
     <p class="card-text"><small class="text-muted">{{this.data.recipe.ingredients}}</small></p>
 
     <p class="card-text"><small class="text-muted">{{this.data.recipe.duration}}</small></p>
 
     {{#if this.data.isSell}}
+    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    {{/if}}
+    {{#if this.data.recipe.author}}
     <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
