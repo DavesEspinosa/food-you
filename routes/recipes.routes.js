@@ -4,6 +4,8 @@ const router = express.Router();
 const Recipe = require("../models/recipe.model");
 const User = require("../models/user.model");
 
+const uploadCloud = require("../config/cloudinary.js");
+
 router.use((req, res, next) => {
   if (req.session.currentUser) {
     next();
@@ -12,6 +14,7 @@ router.use((req, res, next) => {
   // si no hay ning'un usuario le redige al Home
   res.redirect("/");
 });
+
 
 router.get("/list-recipes", async (req, res, next) => {
   try {
@@ -46,17 +49,21 @@ router.get("/add-recipe", (req, res, next) => {
   res.render("recipes/add-recipe");
 });
 
-router.post("/add-recipe", async (req, res, next) => {
+router.post("/add-recipe", 
+uploadCloud.single("image"),
+async (req, res, next) => {
   try {
+
     const { _id } = req.session.currentUser;
-    //req.body para sacar video
-    //crear un arrow function de extractkey
+
     const { video } = req.body;
+
+    let image = '';
+
     const key = (video) => {
       let arr = [...video];
       let result = "";
       if (arr.length > 43) {
-        // si es una lista
         let index = arr.findIndex((letter) => letter === "=");
         let endIndex = arr.findIndex((letter) => letter === "&");
         let extract = arr.slice(index + 1, endIndex);
@@ -68,8 +75,23 @@ router.post("/add-recipe", async (req, res, next) => {
       extract.forEach((letter) => (result += letter));
       return result;
     };
-    await Recipe.create({ ...req.body, video: key(video), author: _id });
+
+    if(typeof req.file !== 'undefined'){
+      image = req.file.url;
+    }
+    // else{
+    //   image= imagenpredefinida;
+    // }
+
+    await Recipe.create({ 
+      ...req.body,
+      video: key(video),
+      image,
+      author: _id
+    });
+
     res.redirect("/own-recipes");
+
   } catch (error) {
     console.log(error);
     next(error);

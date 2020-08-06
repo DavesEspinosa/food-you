@@ -35,17 +35,17 @@
   </form>
 </div>
 {{else}}
-  {{#if this.data.isSell}}
-  <div class="buttons">
+{{#if this.data.isSell}}
+<div class="buttons">
   <form action="/{{this.data.recipe._id}}" method="post">
     <button class="btn btn-primary" type="submit">Order Again</button>
   </form>
 </div>
-  {{else}}
+{{else}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}" method="post">
     <button class="btn btn-primary" type="submit">Let's cook</button>
   </form>
 </div>
-  {{/if}}
+{{/if}}
 {{/if}}

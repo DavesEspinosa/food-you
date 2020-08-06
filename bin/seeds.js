@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Recipe = require("../models/recipe.model");
@@ -127,6 +129,7 @@ const users = [
     city: "a",
     phone: "admin",
     cartList: [],
+    profilePicture: '',
   },
 ];
 

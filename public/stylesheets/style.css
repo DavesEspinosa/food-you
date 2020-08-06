@@ -218,6 +218,12 @@ a {
   width: 2em;
   height: 2em;
 }
+
+@media (min-width: 300px) and (max-width: 450px) {
+.btnSubmit{
+  width: 60%;
+}
+}
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
     top: 14%;
