@@ -12,11 +12,40 @@ a {
   position: absolute;
   bottom: 0;
 }
+#blog article {
+  margin: 2px 40px 90px 40px;
+}
 
+.tips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
+}
+.tips img{
+  
+    width: 1em;
+    height: 1em;
+}
+.tips h6{
+  text-align: center;
+  font-size: 10px;
+  color: #999;
+}
+.tips p{
+  text-align: justify;
+  width: 13em;
+  max-width: 100%;
+  font-family: 'Nanum Myeongjo', serif;
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
 .card-text {
   font-family: "Nanum Myeongjo", serif;
   line-height: 1.3em;
   text-align: center;
+  color: black;
+  font-size: 1.4em;
 }
 .presentation {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -58,21 +87,22 @@ a {
 }
 .info {
   max-width: 500px;
-  margin: 20px auto;
+  margin: auto;
   padding: 2em;
 }
 .explanation {
+  margin-bottom: 2em;
   padding: 2em;
-  margin-bottom: 5em;
 }
 .card {
-  background-color: none;
+  background-color: #F4F5F2;
   border: none;
 }
 
 .card-title {
   text-align: center;
   color: #d46466;
+  font-size: 2.4em;
 }
 .card-title:hover {
   color: black;
@@ -91,6 +121,7 @@ a {
 #card-list {
   margin-bottom: 10px;
   margin-top: 60px;
+  font-size: 70%;
 }
 
 #img-card-list {
@@ -136,7 +167,6 @@ a {
 }
 
 .login-container {
-  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,6 +249,15 @@ a {
   height: 2em;
 }
 
+
+@media (min-width: 300px) and (max-width: 780px) {
+  #blog article {
+    margin: 2px 40px 60px 40px;
+  }
+  .explanation {
+    padding: 2em;
+  }
+  }
 @media (min-width: 300px) and (max-width: 450px) {
 .btnSubmit{
   width: 60%;
@@ -245,11 +284,11 @@ a {
   .header h1{
     font-size: 2em;
   }
-  .form-content {
+  /* .form-content {
     padding: 5%;
     border: 1px solid #ced4da;
     margin-bottom: 30%;
-  }
+  } */
 }
 @media (min-width: 320px) and (max-width: 780px) {
   .list-recipes-container {

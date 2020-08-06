@@ -8,10 +8,11 @@
 </div>
 {{/if}}
 
-<div class="card mb-3" id="detail">
-  <img src="{{this.data.recipe.image}}" class="card-img-top" alt="">
-  <div class="card-body">
-    <p class="card-text">{{this.data.recipe.inspiration}}</p>
+
+ <div class="card mb-3" id="detail">
+      <img class="card-img-top" src="https://res.cloudinary.com/sepuckett86/image/upload/v1513176680/IMG_5837_xicdt5.jpg" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text" id="inspiration">{{this.data.recipe.inspiration}}</p>
     <p class="card-text"><small class="text-muted">{{this.data.recipe.ingredients}}</small></p>
 
     <p class="card-text"><small class="text-muted">{{this.data.recipe.duration}}</small></p>
@@ -26,9 +27,9 @@
       frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
     {{/if}}
-  </div>
-</div>
-{{#if this.data.recipe.author}}
+      </div>
+    </div>
+    {{#if this.data.recipe.author}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}/delete" method="post">
     <button class="btn btn-danger" type="submit">Delete</button>

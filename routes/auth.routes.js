@@ -78,7 +78,7 @@ router.post(
         profilePicture,
       });
 
-      res.redirect("/");
+      res.redirect("/recipes");
     } catch (error) {
       console.log(error);
       res.render("auth/signup", {
