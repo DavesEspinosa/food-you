@@ -17,11 +17,13 @@ router.post(
   uploadCloud.single("profilePicture"),
   async (req, res, next) => {
     try {
-      const { email, password, } = req.body;
+      const { email, password } = req.body;
 
-      let profilePicture = '';
+      let profilePicture = "";
 
-      let errorMessage = {}
+      let isErrors = false;
+
+      let errorMessage = {};
 
       if (email === "" || password === "") {
         errorMessage.generic = "Enter email and password";
@@ -30,52 +32,55 @@ router.post(
       const isUser = await User.findOne({ email });
       if (isUser) {
         errorMessage.emailExists = "This user already exists";
+        isErrors = true;
       }
 
-    if(password.length<8) {
-        errorMessage.passwordMessage = "Password must contain at least 8 characters";
-    }
-    // address city postCode phone
+      console.log("esta es la pass", password);
+      console.log("Password true?", /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password));
 
-    Object.entries(req.body).map( valueInput => {
-      let key = valueInput[0]; // campo
-      let value = valueInput[1]; // valor del campo
-      console.log(`key: ${key} value: ${value}`)
+      if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password)) {
+        errorMessage.passwordMessage =
+          "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character";
+        isErrors = true;
+      }
 
-      if (value === "") {
-        errorMessage[key]="Mandatoy";
+      Object.entries(req.body).map((valueInput) => {
+        let key = valueInput[0]; // campo
+        let value = valueInput[1]; // valor del campo
+        console.log(`key: ${key} value: ${value}`);
+
+        if (value === "") {
+          errorMessage[key] = "Mandatoy";
+          isErrors = true;
+          return;
+        }
         return;
+      });
+
+      if (typeof req.file !== "undefined") {
+        profilePicture = req.file.url;
+      } else {
+        profilePicture = process.env.DEFAULT_PICTURE;
       }
 
-      return;
-    });
-
-      // const passwordValidation = pass => /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(pass);
-      // console.log(passwordValidation(password))
-      // console.log('esta es la pass', password)
-      // console.log(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/));
-      // if(password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
-      //   res.render("auth/signup", { passwordMessage: "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character" });
-      //   return;
-      // }
-
-      if(typeof req.file !== 'undefined'){
-        profilePicture = req.file.url;
-      }else{
-        profilePicture = process.env.DEFAULT_PICTURE;
+      if (isErrors) {
+        console.log("hay errores", errorMessage);
+        res.render("auth/signup", { errorMessage });
+        return;
       }
 
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
 
-      if(errorMessage.length!==0){
-        console.log('hay errores', errorMessage)
-        res.render("auth/signup", { errorMessage });
-        return;
-      }
+      await User.create({
+        ...req.body,
+        password: hashedPassword,
+        profilePicture,
+      });
 
+      res.redirect("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       res.render("auth/signup", {
         errorMessage: "Ops!! Error while creating account. Please try again.",
       });
