@@ -17,48 +17,70 @@ router.post(
   uploadCloud.single("profilePicture"),
   async (req, res, next) => {
     try {
-      const { email, password, } = req.body;
-      console.log('Este es el body ', req.body)
-      let profilePicture = '';
+      const { email, password } = req.body;
+
+      let profilePicture = "";
+
+      let isErrors = false;
+
+      let errorMessage = {};
 
       if (email === "" || password === "") {
-        res.render("auth/signup", { errorMessage: "Enter email and password" });
-        return;
+        errorMessage.generic = "Enter email and password";
       }
 
       const isUser = await User.findOne({ email });
       if (isUser) {
-        res.render("auth/signup", { errorMessage: "This user already exists" });
-        return;
+        errorMessage.emailExists = "This user already exists";
+        isErrors = true;
       }
-      
-      console.log(typeof req.file)
 
-      if(typeof req.file !== 'undefined'){
+      console.log("esta es la pass", password);
+      console.log("Password true?", /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password));
+
+      if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password)) {
+        errorMessage.passwordMessage =
+          "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character";
+        isErrors = true;
+      }
+
+      Object.entries(req.body).map((valueInput) => {
+        let key = valueInput[0]; // campo
+        let value = valueInput[1]; // valor del campo
+        console.log(`key: ${key} value: ${value}`);
+
+        if (value === "") {
+          errorMessage[key] = "Mandatoy";
+          isErrors = true;
+          return;
+        }
+        return;
+      });
+
+      if (typeof req.file !== "undefined") {
         profilePicture = req.file.url;
-      }else{
+      } else {
         profilePicture = process.env.DEFAULT_PICTURE;
+      }
+
+      if (isErrors) {
+        console.log("hay errores", errorMessage);
+        res.render("auth/signup", { errorMessage });
+        return;
       }
 
       const salt = bcrypt.genSaltSync(bcrytpSalt);
       const hashedPassword = bcrypt.hashSync(password, salt);
-      const newUser = new User({
+
+      await User.create({
         ...req.body,
         password: hashedPassword,
         profilePicture,
       });
 
-      newUser
-        .save()
-        .then(() => {
-          res.redirect("/login");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
+      res.redirect("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       res.render("auth/signup", {
         errorMessage: "Ops!! Error while creating account. Please try again.",
       });

@@ -78,7 +78,10 @@ async (req, res, next) => {
 
     if(typeof req.file !== 'undefined'){
       image = req.file.url;
-    };
+    }
+    // else{
+    //   image= imagenpredefinida;
+    // }
 
     await Recipe.create({ 
       ...req.body,
