@@ -4,73 +4,85 @@
   </div>
 
 
-<div class="signup-container">
-  <form action="/signup" method="post" class="signup-form" enctype="multipart/form-data">
-    <div class="form-group">
-      <label for="name-input">Name:</label>
-      <input class="form-control" type="text" name="name" id="name-input">
-    </div>
+  <div class="signup-container">
+    <form action="/signup" method="post" class="signup-form" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name-input">Name:</label>
+        <input class="form-control" type="text" name="name" id="name-input">
+      </div>
 
-    <div class="form-group">
-      <label for="firstName-input">First name:</label>
-      <input class="form-control" type="text" name="firstname" id="firstName-input">
-    </div>
+      <div class="form-group">
+        <label for="firstName-input">First name:</label>
+        <input class="form-control" type="text" name="firstname" id="firstName-input">
+      </div>
 
-    <div class="form-group">
-      <label for="userName-input">Username:</label>
-      <input class="form-control" type="text" name="username" id="userName-input">
+      <div class="form-group">
+        <label for="userName-input">Username:</label>
+        <input class="form-control" type="text" name="username" id="userName-input">
 
-    </div>
+      </div>
 
-    <div class="form-group">
-      <label for="email-input">Email:</label>
-      <input class="form-control" type="email" name="email" id="email-input">
-    </div>
+      <div class="form-group">
+        <label for="email-input">Email:</label>
+        <input class="form-control" type="email" name="email" id="email-input">
+      </div>
 
-    <div class="form-group">
-      <label for="password-input">Password:</label>
-      <input class="form-control" type="password" name="password" id="password-input">
-    </div>
+      {{#if emailMessage}}
+        <p class="error-message">
+          {{ emailMessage }}
+        </p>
+      {{/if}}
 
-    <div class="form-group">
-      <label for="address-input">Address</label>
-      <input class="form-control" type="text" name="address" id="address-input">
-    </div>
+      <div class="form-group">
+        <label for="password-input">Password:</label>
+        <input class="form-control" type="password" name="password" id="password-input">
+      </div>
 
-    <div class="form-group">
-      <label for="postCode-input">Post code:</label>
-      <input class="form-control" type="text" name="postcode" id="postCode-input">
-    </div>
+      {{#if passwordMessage}}
+        <p class="error-message">
+          {{ passwordMessage }}
+        </p>
+      {{/if}}
 
-    <div class="form-group">
-      <label for="city-input">City</label>
-      <input class="form-control" type="text" name="city" id="city-input">
-    </div>
+      <div class="form-group">
+        <label for="address-input">Address</label>
+        <input class="form-control" type="text" name="address" id="address-input">
+      </div>
 
-    <div class="form-group">
-      <label for="phone-input">Phone:</label>
-      <input class="form-control" type="text" name="phone" id="phone-input">
-    </div>
+      <div class="form-group">
+        <label for="postCode-input">Post code:</label>
+        <input class="form-control" type="text" name="postcode" id="postCode-input">
+      </div>
 
-    <div class="form-group">
-      <label for="profilePicture-input">Profile picture:</label>
-      <input class="form-control" type="file" name="profilePicture" id="profilePicture-input" >
-    </div>
+      <div class="form-group">
+        <label for="city-input">City</label>
+        <input class="form-control" type="text" name="city" id="city-input">
+      </div>
 
-    <button class="signup-button">Sign up</button>
-  </form>
+      <div class="form-group">
+        <label for="phone-input">Phone:</label>
+        <input class="form-control" type="text" name="phone" id="phone-input">
+      </div>
 
-  {{#if errorMessage}}
-  <p class="error-message">
-    {{ errorMessage }}
-  </p>
-  {{/if}}
+      <div class="form-group">
+        <label for="profilePicture-input">Profile picture:</label>
+        <input class="form-control" type="file" name="profilePicture" id="profilePicture-input">
+      </div>
 
-  <p>
-    Already have an account?
-    <a href="/login">
-      Log in.
-    </a>
-  </p>
-</div>
+      <button class="signup-button">Sign up</button>
+    </form>
+
+    {{#if errorMessage}}
+    <p class="error-message">
+      {{ errorMessage }}
+    </p>
+    {{/if}}
+
+    <p>
+      Already have an account?
+      <a href="/login">
+        Log in.
+      </a>
+    </p>
+  </div>
 </section>

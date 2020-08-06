@@ -4,7 +4,7 @@
 
 
 <div class="add-recipe-container">
-  <form action="/add-recipe" method="post" class="add-recipe-form">
+  <form action="/add-recipe" method="post" class="add-recipe-form" enctype="multipart/form-data">
     <div class="form-group">
       <label for="title-input">Title</label>
       <input type="text" class="form-control" name="title" id="title-input">
@@ -41,7 +41,7 @@
 
     <div class="form-group">
       <label for="image-input">Image:</label>
-      <input type="text" class="form-control" name="image" id="image-input">
+      <input type="file" class="form-control" name="image" id="image-input">
     </div>
 
     <button class="btn btn-primary add-recipe-button">Add recipe</button>

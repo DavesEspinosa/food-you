@@ -36,8 +36,10 @@ router.post("/edit-profile",
   async (req, res, next) => {
   try {
     const user = req.session.currentUser;
-    console.log('Este es el currentUser viejo:', user)
+
     const { _id } = user;
+
+    
 
     let profileUpdate = {}
 
@@ -47,6 +49,12 @@ router.post("/edit-profile",
       console.log(`key: ${key} value: ${value}`)
 
       if(key === 'password' && value !== ''){
+
+        if(key.length<8) {
+          res.render('profile/edit-profile', { errorMessage: "Password must contain at least 8 characters." });
+          return;
+        }
+
         const salt = bcrypt.genSaltSync(bcrytpSalt);
         const hashedPassword = bcrypt.hashSync(value, salt);
         profileUpdate[key]=hashedPassword;
@@ -64,7 +72,7 @@ router.post("/edit-profile",
     if(profileUpdate.email){
 
       const isUser = await User.findOne({ email: profileUpdate.email });
-      console.log('este es el isUser', isUser)
+      
       if(isUser){
         errorMessage = 'This user already exists';
         res.render('profile/edit-profile', { errorMessage })
