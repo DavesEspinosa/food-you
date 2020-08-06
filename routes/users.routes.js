@@ -39,18 +39,14 @@ router.post("/edit-profile",
 
     const { _id } = user;
 
-    
-
     let profileUpdate = {}
 
     Object.entries(req.body).map( valueInput => {
       let key = valueInput[0]; // campo
       let value = valueInput[1]; // valor del campo
-      console.log(`key: ${key} value: ${value}`)
-
       if(key === 'password' && value !== ''){
 
-        if(key.length<8) {
+        if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(value)) {
           res.render('profile/edit-profile', { errorMessage: "Password must contain at least 8 characters." });
           return;
         }
@@ -84,8 +80,6 @@ router.post("/edit-profile",
       profileUpdate['profilePicture'] = req.file.url;
     }
 
-    console.log('Este es el profileUpdate', profileUpdate)
-
     await User.updateOne(
       { _id },
       { $set: { ...profileUpdate } },
@@ -93,7 +87,6 @@ router.post("/edit-profile",
     );
 
     req.session.currentUser = await User.findById({ _id });
-    console.log('Este es el user nuevo: ', req.session.currentUser)
     res.redirect("/profile");
   } catch (error) {
     console.log(error);

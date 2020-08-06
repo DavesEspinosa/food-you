@@ -21,7 +21,7 @@ const recipes = [
       "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
     cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
-    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg",
+    image: "/images/photo-1481931098730-318b6f776db0.jpeg",
     duration: 50,
   },
   {
@@ -33,7 +33,7 @@ const recipes = [
       "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
     cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
-    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg",
+    image: "/images/photo-1476718406336-bb5a9690ee2a.jpeg",
     duration: 50,
   },
   {
@@ -45,10 +45,9 @@ const recipes = [
       "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
     cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
-    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg",
+    image: "/images/photo-1485921325833-c519f76c4927.jpeg",
     duration: 50,
-  },
-  {
+  },{
     author: null,
     title: "Whole roast turbot with clams, fennel and potatoes",
     inspiration:
@@ -57,10 +56,9 @@ const recipes = [
       "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
     cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
-    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg",
+    image: "/images/photo-1567620905732-2d1ec7ab7445.jpeg",
     duration: 50,
-  },
-  {
+  },{
     author: null,
     title: "Whole roast turbot with clams, fennel and potatoes",
     inspiration:
@@ -69,10 +67,53 @@ const recipes = [
       "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
     cuisine: "Mediterranian",
     video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
-    image: "https://www.deliciousmagazine.co.uk/wp-content/uploads/2020/05/WEB-READY-CreamyVeggieSausageSpinachPastaVegan_Option2-768x960.jpg",
+    image: "/images/photo-1518779578993-ec3579fee39f.jpeg",
     duration: 50,
-  },
-  
+  },{
+    author: null,
+    title: "Whole roast turbot with clams, fennel and potatoes",
+    inspiration:
+      "Serving a whole turbot may seem extravagant, but it’s simple to prepare and makes a memorable centrepiece. Cooking a whole fish makes an impressive dinner party main.",
+    ingredients: 
+      "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
+    cuisine: "Mediterranian",
+    video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
+    image: "/images/photo-1514326640560-7d063ef2aed5.jpeg",
+    duration: 50,
+  },{
+    author: null,
+    title: "Whole roast turbot with clams, fennel and potatoes",
+    inspiration:
+      "Serving a whole turbot may seem extravagant, but it’s simple to prepare and makes a memorable centrepiece. Cooking a whole fish makes an impressive dinner party main.",
+    ingredients: 
+      "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
+    cuisine: "Mediterranian",
+    video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
+    image: "/images/photo-1485921198582-a55119c97421.jpeg",
+    duration: 50,
+  },{
+    author: null,
+    title: "Whole roast turbot with clams, fennel and potatoes",
+    inspiration:
+      "Serving a whole turbot may seem extravagant, but it’s simple to prepare and makes a memorable centrepiece. Cooking a whole fish makes an impressive dinner party main.",
+    ingredients: 
+      "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
+    cuisine: "Mediterranian",
+    video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
+    image: "/images/photo-1485962398705-ef6a13c41e8f.jpeg",
+    duration: 50,
+  },{
+    author: null,
+    title: "Whole roast turbot with clams, fennel and potatoes",
+    inspiration:
+      "Serving a whole turbot may seem extravagant, but it’s simple to prepare and makes a memorable centrepiece. Cooking a whole fish makes an impressive dinner party main.",
+    ingredients: 
+      "small fennel bulbs; waxy potatoes (such as charlotte); onion; chilli flakes; fennel seeds; olive oil; live clams; dry white wine; turbot",
+    cuisine: "Mediterranian",
+    video: "https://www.youtube.com/watch?v=A9T2WK3dMeI",
+    image: "/images/photo-1504544750208-dc0358e63f7f.jpeg",
+    duration: 50,
+  }
 ];
 
 const users = [

@@ -11,26 +11,46 @@
         <input class="form-control" type="text" name="name" id="name-input">
       </div>
 
+      {{#if errorMessage.name }}
+      <p class="error-message">
+        {{ errorMessage.name }}
+      </p>
+      {{/if}}
+
       <div class="form-group">
         <label for="firstName-input">First name:</label>
         <input class="form-control" type="text" name="firstname" id="firstName-input">
       </div>
 
+      {{#if errorMessage.firstname}}
+      <p class="error-message">
+        {{ errorMessage.firstname}}
+      </p>
+      {{/if}}
+
       <div class="form-group">
         <label for="userName-input">Username:</label>
         <input class="form-control" type="text" name="username" id="userName-input">
-
       </div>
+
+      {{#if errorMessage.username}}
+      <p class="error-message">
+        {{ errorMessage.username}}
+      </p>
+      {{/if}}
+
 
       <div class="form-group">
         <label for="email-input">Email:</label>
         <input class="form-control" type="email" name="email" id="email-input">
       </div>
 
-      {{#if emailMessage}}
-        <p class="error-message">
-          {{ emailMessage }}
-        </p>
+      
+
+      {{#if errorMessage.emailExists}}
+      <p class="error-message">
+        {{ errorMessage.emailExists }}
+      </p>
       {{/if}}
 
       <div class="form-group">
@@ -38,10 +58,10 @@
         <input class="form-control" type="password" name="password" id="password-input">
       </div>
 
-      {{#if passwordMessage}}
-        <p class="error-message">
-          {{ passwordMessage }}
-        </p>
+      {{#if errorMessage.passwordMessage}}
+      <p class="error-message">
+        {{ errorMessage.passwordMessage }}
+      </p>
       {{/if}}
 
       <div class="form-group">
@@ -49,20 +69,42 @@
         <input class="form-control" type="text" name="address" id="address-input">
       </div>
 
+      {{#if errorMessage.address}}
+      <p class="error-message">
+        {{ errorMessage.address}}
+      </p>
+      {{/if}}
+
       <div class="form-group">
         <label for="postCode-input">Post code:</label>
         <input class="form-control" type="text" name="postcode" id="postCode-input">
       </div>
 
+      {{#if errorMessage.postcode }}
+      <p class="error-message">
+        {{ errorMessage.postcode }}
+      </p>
+      {{/if}}
+
       <div class="form-group">
         <label for="city-input">City</label>
         <input class="form-control" type="text" name="city" id="city-input">
       </div>
+      {{#if errorMessage.city}}
+      <p class="error-message">
+        {{ errorMessage.city }}
+      </p>
+      {{/if}}
 
       <div class="form-group">
         <label for="phone-input">Phone:</label>
         <input class="form-control" type="text" name="phone" id="phone-input">
       </div>
+      {{#if errorMessage.phone }}
+      <p class="error-message">
+        {{ errorMessage.phone }}
+      </p>
+      {{/if}}
 
       <div class="form-group">
         <label for="profilePicture-input">Profile picture:</label>
@@ -72,9 +114,9 @@
       <button class="signup-button">Sign up</button>
     </form>
 
-    {{#if errorMessage}}
+    {{#if errorMessage.generic}}
     <p class="error-message">
-      {{ errorMessage }}
+      {{ errorMessage.generic }}
     </p>
     {{/if}}
 
