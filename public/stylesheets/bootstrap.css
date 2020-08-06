@@ -223,7 +223,7 @@ display: flex;
 } */
 
 /* Responsive design for image heights */
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .card-img-top {
     height: 50vw;
   }
@@ -245,4 +245,4 @@ display: flex;
   .card-img-top {
     height: 25vw;
   }
-}
+} */

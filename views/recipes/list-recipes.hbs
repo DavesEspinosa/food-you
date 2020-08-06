@@ -4,6 +4,8 @@
   <h1>foodyou Recipes</h1>
 </div>
 
+
+
 <section class="content">
   <div class="list-recipes-container">
     {{#each recipes}}
@@ -12,9 +14,10 @@
   </div>
 </section>
 
+
 {{#if errorMessage}}
   <p class="error-message">
-    LA BASE DE DATOS A IMPLOSIONADO
+    Isn't any recipe on the database.
   </p>
 {{/if}}
 

@@ -28,6 +28,26 @@ router.get("/list-recipes", async (req, res, next) => {
     return;
   }
 });
+router.get("/social-recipes", async (req, res, next) => {
+  try {
+    const { _id } = req.session.currentUser;
+    const recipe = await Recipe.find({
+      $and: [{ author: { $ne: null } }, { author: { $ne: _id } }],
+    });
+    const recipes = {
+      recipe,
+      isSocial: true,
+    };
+    recipe.length === 0
+      ? res.render("recipes/social-recipes", { errorMessage: true })
+      : res.render("recipes/social-recipes", { recipes });
+  } catch (error) {
+    console.log(error);
+    next(error);
+    return;
+  }
+});
+
 
 router.get("/own-recipes", async (req, res, next) => {
   try {
@@ -118,6 +138,30 @@ router.get("/recipe/:id", async (req, res, next) => {
     return;
   }
 });
+
+
+router.get("/social/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const recipe = await Recipe.findById({ _id: req.params.id });
+    const cartList = await User.findOne({ cartList: id });
+
+    let isSell = cartList ? true : false;
+
+    let data = {
+      recipe,
+      isSell,
+    };
+
+    res.render("recipes/social-details", { data });
+  } catch (error) {
+    console.log(error);
+    next(error);
+    return;
+  }
+});
+
 
 router.post("/:id", async (req, res, next) => {
   try {

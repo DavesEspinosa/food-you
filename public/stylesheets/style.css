@@ -22,24 +22,24 @@ a {
   flex-wrap: wrap;
   margin-bottom: 5%;
 }
-.tips img{
-  
-    width: 1em;
-    height: 1em;
+.tips img {
+  width: 1em;
+  height: 1em;
 }
-.tips h6{
+.tips h6 {
   text-align: center;
   font-size: 10px;
   color: #999;
 }
-.tips p{
+.tips p {
   text-align: justify;
   width: 13em;
   max-width: 100%;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
   margin-top: 20px;
   font-size: 1.3rem;
 }
+
 .card-text {
   font-family: "Nanum Myeongjo", serif;
   line-height: 1.3em;
@@ -57,7 +57,7 @@ a {
 
 .title {
   position: absolute;
-  top: 28%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -95,7 +95,7 @@ a {
   padding: 2em;
 }
 .card {
-  background-color: #F4F5F2;
+  background-color: #f4f5f2;
   border: none;
 }
 
@@ -109,6 +109,7 @@ a {
 }
 .card-body {
   text-align: center;
+  padding: 1, 25rem 0rem;
 }
 
 .list-recipes-container {
@@ -124,10 +125,10 @@ a {
   font-size: 70%;
 }
 
-#img-card-list {
+/* #img-card-list {
   height: 300px;
 }
-
+ */
 .header {
   padding: 10px 16px;
   background: white;
@@ -197,9 +198,10 @@ a {
 }
 #detail {
 }
-
-.iframe {
+#compress {
+  margin: 0% 15% 8%;
 }
+
 /* Edit profile */
 .note {
   text-align: center;
@@ -248,10 +250,37 @@ a {
   width: 2em;
   height: 2em;
 }
-#login{
+#login {
   margin: 0;
 }
-
+.title-detail {
+  margin: 0 10%;
+  text-align: left;
+}
+.title-detail h6 {
+  font-size: 1.3em;
+  color: #d46466;
+}
+.card-text2 {
+  font-family: "Nanum Myeongjo", serif;
+  line-height: 1.3em;
+  text-align: left;
+  color: black;
+  font-size: 1em;
+  margin-bottom: 5%;
+}
+.cook {
+  background-color: gray;
+  color: #fff;
+}
+.add {
+  display: flex;
+  justify-content: center;
+}
+.add p {
+  margin-top: 10%;
+  font-size: 2em;
+}
 @media (min-width: 300px) and (max-width: 780px) {
   #blog article {
     margin: 2px 40px 60px 40px;
@@ -259,11 +288,27 @@ a {
   .explanation {
     padding: 2em;
   }
-  }
-@media (min-width: 300px) and (max-width: 450px) {
-.btnSubmit{
-  width: 60%;
 }
+@media (min-width: 300px) and (max-width: 760px) {
+  #compress {
+    margin: 0em;
+  }
+}
+@media (min-width: 300px) and (max-width: 450px) {
+  .btnSubmit {
+    width: 60%;
+  }
+  .iframe {
+    margin-bottom: 5%;
+    height: 100%;
+    width: 100%;
+  }
+  .container {
+    margin-bottom: 25%;
+  }
+  .btn-dark {
+    margin: 0 5%;
+  }
 }
 @media (min-width: 300px) and (max-width: 550px) {
   .title {
@@ -283,7 +328,7 @@ a {
   .logo {
     font-size: 1.5em;
   }
-  .header h1{
+  .header h1 {
     font-size: 2em;
   }
   /* .form-content {
@@ -299,8 +344,12 @@ a {
     margin-bottom: 15%;
     justify-content: space-around;
   }
-  #card-list{
-    margin-bottom: 15%  ;
+  #card-list {
+    margin-bottom: 15%;
+  }
+  .login-container {
+    margin-bottom: 25%;
+    text-align: center;
   }
 }
 @media (min-width: 550px) and (max-width: 780px) {
@@ -314,10 +363,14 @@ a {
 }
 @media (min-width: 780px) and (max-width: 1440px) {
   .list-recipes-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0% 15% 20% 15%;
-}
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0% 15% 20% 15%;
+  }
+  .login-container {
+    margin-bottom: 25%;
+    text-align: center;
+  }
 }

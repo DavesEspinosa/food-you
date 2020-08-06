@@ -1,0 +1,32 @@
+<div class="header" id="myHeader">
+  <h1>{{this.data.recipe.title}}</h1>
+</div>
+
+ <div class="card mb-3" id="compress">
+      <img id="detail" class="card-img-top" src="{{this.data.recipe.image}}" alt="Card image cap">
+      <div class="card-body">
+        <div class="title-detail" >
+        <h6 >Inspiration:</h6>
+        <p class="card-text2" id="inspiration">{{this.data.recipe.inspiration}}</p>
+        </div>
+         <div class="title-detail" >
+        <h6 >Cuisine:</h6>
+        <p class="card-text2" id="inspiration">{{this.data.recipe.cuisine}}</p>
+        </div>
+        <div class="title-detail">
+        <h6>Ingredients:</h6>
+    <p class="card-text2">{{this.data.recipe.ingredients}}</p>
+        </div>
+        <div class="title-detail">
+       <h6  >Duration:</h6>
+      <p class="card-text2">{{this.data.recipe.duration}} '</p>
+      </div>
+
+    
+    <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+     </div>
+ </div>
+
+    

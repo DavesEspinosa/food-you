@@ -1,0 +1,29 @@
+<div class="header" id="myHeader">
+  <h1>Another Users Recipes</h1>
+</div>
+
+
+<section class="content">
+  <div class="list-recipes-container">
+    {{#each recipes.recipe}}
+     <a href="/social/{{id}}" style="width: 19rem;"> 
+  <div class="card" style="width: 19rem;" id="card-list">
+    <img src="{{image}}" class=" card-img-top " alt="{{title}}" id="img-card-list">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <p class="card-text">{{inspiration}}</p>
+    </div>
+  </div>
+</a>
+    {{/each}}
+  </div>
+</section>
+
+
+
+{{#if errorMessage}}
+  <p class="error-message">
+    It looks like the other users are a bit shy 🙈
+  </p>
+{{/if}}
+

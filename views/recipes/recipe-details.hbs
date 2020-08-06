@@ -9,13 +9,25 @@
 {{/if}}
 
 
- <div class="card mb-3" id="detail">
-      <img class="card-img-top" src="https://res.cloudinary.com/sepuckett86/image/upload/v1513176680/IMG_5837_xicdt5.jpg" alt="Card image cap">
+ <div class="card mb-3" id="compress">
+      <img id="detail" class="card-img-top" src="{{this.data.recipe.image}}" alt="Card image cap">
       <div class="card-body">
-        <p class="card-text" id="inspiration">{{this.data.recipe.inspiration}}</p>
-    <p class="card-text"><small class="text-muted">{{this.data.recipe.ingredients}}</small></p>
-
-    <p class="card-text"><small class="text-muted">{{this.data.recipe.duration}}</small></p>
+        <div class="title-detail" >
+        <h6 >Inspiration:</h6>
+        <p class="card-text2" id="inspiration">{{this.data.recipe.inspiration}}</p>
+        </div>
+        <div class="title-detail" >
+        <h6 >Cuisine:</h6>
+        <p class="card-text2" id="inspiration">{{this.data.recipe.cuisine}}</p>
+        </div>
+        <div class="title-detail">
+        <h6>Ingredients:</h6>
+    <p class="card-text2">{{this.data.recipe.ingredients}}</p>
+        </div>
+        <div class="title-detail">
+       <h6  >Duration:</h6>
+      <p class="card-text2">{{this.data.recipe.duration}} '</p>
+      </div>
 
     {{#if this.data.isSell}}
     <iframe class="iframe" width="560" height="315" src="https://www.youtube.com/embed/{{this.data.video}}"
@@ -35,17 +47,17 @@
     <button class="btn btn-danger" type="submit">Delete</button>
   </form>
 </div>
-{{else}}
+   {{else}}
 {{#if this.data.isSell}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}" method="post">
-    <button class="btn btn-primary" type="submit">Order Again</button>
+    <button class="btn cook" type="submit">Order Again</button>
   </form>
 </div>
 {{else}}
 <div class="buttons">
   <form action="/{{this.data.recipe._id}}" method="post">
-    <button class="btn btn-primary" type="submit">Let's cook</button>
+    <button class="btn cook" type="submit">Let's cook</button>
   </form>
 </div>
 {{/if}}

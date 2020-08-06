@@ -5,7 +5,9 @@
 </div>
 
 <section class="content">
-  <a href="/add-recipe">Add you recipes</a>
+  <div class="add">
+  <p><a href="/add-recipe"><i class="far fa-plus-square"></i> Add your recipes</a></p>
+  </div>
   <div class="list-recipes-container">
     {{#each recipes}}
       {{> cardRecipe this}}
@@ -16,7 +18,7 @@
 
 {{#if errorMessage}}
   <p class="error-message">
-    Ops! Seems you haven't own recipes.
+    Ops! Seems that you haven't own recipes.
   </p>
 {{/if}}
 
