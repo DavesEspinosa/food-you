@@ -12,6 +12,8 @@
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddzºIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+ <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Marcellus&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
   <!-- Our Custom CSS -->
   <link rel="stylesheet" href="/stylesheets/style.css">
@@ -39,9 +41,9 @@
         <i class="fas fa-arrow-left"></i>
       </div>
       <div class="sidebar-header">
-        <div class="form-group">
-          <img src="{{currentUserInfo.profilePicture}}" alt="">
-        </div>
+         <div class="form-group">
+            <img src="{{currentUserInfo.profilePicture}}" alt="">
+         </div>
       </div>
       {{#if isUserLoggedIn}}
       <ul class="list-unstyled components">
@@ -56,9 +58,6 @@
         </li>
         <li>
           <a href="/own-recipes">Your Recipes</a>
-        </li>
-        <li>
-          <a href="/own-recipes">Social</a>
         </li>
       </ul>
       <ul class="list-unstyled CTAs">
@@ -82,25 +81,26 @@
     <!-- Page Content and nav without collapse, donde cambiará el icono de usuario-->
 
     <div id="content">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
-
+          
           <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-bars"></i>
             {{#if isUserLoggedIn}}
-            <i class="fas fa-user-check"></i>
+              <span>Enjoy</span>
             {{else}}
-            <i class="fas fa-user-alt-slash"></i>
+              <span>Acces</span>
             {{/if}}
-            <span>Menu</span>
           </button>
-          <a class="navbar-brand" href="/list-recipes"><i class="fas fa-utensils"></i></a>
+          <h4 class="logo">foodyou</h4>
+          <a class="navbar-brand" href="/list-recipes"><img class="icon" src="/images/bbq.png"></img></a>
         </div>
       </nav>
 
       {{{body}}}
       <footer>
         <nav class=" footer navbar sticky-bottom navbar-light bg-light">
-          <a class="navbar-brand" href="#">Food You &copy;2020</a>
+          <a class="navbar-brand" href="#">foodyou &copy;2020</a>
           <div class="socials">
             <a href="http://twitter.com" target="_blank"><i class="fab fa-twitter fa-1x text-info mx-1"></i></a>
             <a href="http://facebook.com" target="_blank"><i class="fab fa-facebook fa-1x text-primary mx-1"></i></a>

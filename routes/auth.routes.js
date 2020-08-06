@@ -35,14 +35,14 @@ router.post(
         isErrors = true;
       }
 
-      console.log("esta es la pass", password);
+      /*  console.log("esta es la pass", password);
       console.log("Password true?", /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password));
 
       if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password)) {
         errorMessage.passwordMessage =
           "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character";
         isErrors = true;
-      }
+      } */
 
       Object.entries(req.body).map((valueInput) => {
         let key = valueInput[0]; // campo
@@ -77,8 +77,8 @@ router.post(
         password: hashedPassword,
         profilePicture,
       });
-
-      res.redirect("/");
+      req.session.currentUser = await User.findOne({ email });
+      res.redirect("/list-recipes");
     } catch (error) {
       console.log(error);
       res.render("auth/signup", {
