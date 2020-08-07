@@ -82,6 +82,7 @@ router.post(
       const key = (video) => {
         let arr = [...video];
         let result = "";
+
         if (arr.length > 43) {
           let index = arr.findIndex((letter) => letter === "=");
           let endIndex = arr.findIndex((letter) => letter === "&");
