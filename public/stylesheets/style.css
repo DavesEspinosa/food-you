@@ -5,7 +5,22 @@ font-family: 'Nanum Myeongjo', serif;
 a {
   color: #d46466;
 }
-
+.sign{
+  margin-top: 5%;
+}
+.account{
+  margin-top: 3%;
+}
+#generic-error{
+  margin-top: 2%;
+padding: 1% 2%; 
+}
+.alert {
+  padding: 2% 8% 2% 2%;
+  }
+.alert-danger {
+margin: 0% 8%;
+}
 .footer {
   margin-bottom: 0px;
   width: 100%;

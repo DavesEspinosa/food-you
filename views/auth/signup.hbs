@@ -12,9 +12,9 @@
       </div>
 
       {{#if errorMessage.name }}
-      <p class="error-message">
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage.name }}
-      </p>
+      </div>
       {{/if}}
 
       <div class="form-group">
@@ -23,9 +23,9 @@
       </div>
 
       {{#if errorMessage.firstname}}
-      <p class="error-message">
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage.firstname}}
-      </p>
+      </div>
       {{/if}}
 
       <div class="form-group">
@@ -34,9 +34,9 @@
       </div>
 
       {{#if errorMessage.username}}
-      <p class="error-message">
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage.username}}
-      </p>
+      </div>
       {{/if}}
 
 
@@ -48,9 +48,9 @@
       
 
       {{#if errorMessage.emailExists}}
-      <p class="error-message">
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage.emailExists }}
-      </p>
+      </div>
       {{/if}}
 
       <div class="form-group">
@@ -59,7 +59,7 @@
       </div>
 
       {{#if errorMessage.passwordMessage}}
-      <p class="error-message">
+      <p class="alert alert-danger" role="alert">
         {{ errorMessage.passwordMessage }}
       </p>
       {{/if}}
@@ -70,7 +70,7 @@
       </div>
 
       {{#if errorMessage.address}}
-      <p class="error-message">
+      <p class="alert alert-danger" role="alert">
         {{ errorMessage.address}}
       </p>
       {{/if}}
@@ -81,7 +81,7 @@
       </div>
 
       {{#if errorMessage.postcode }}
-      <p class="error-message">
+      <p class="alert alert-danger" role="alert">
         {{ errorMessage.postcode }}
       </p>
       {{/if}}
@@ -91,7 +91,7 @@
         <input class="form-control" type="text" name="city" id="city-input">
       </div>
       {{#if errorMessage.city}}
-      <p class="error-message">
+      <p class="alert alert-danger" role="alert">
         {{ errorMessage.city }}
       </p>
       {{/if}}
@@ -101,7 +101,7 @@
         <input class="form-control" type="text" name="phone" id="phone-input">
       </div>
       {{#if errorMessage.phone }}
-      <p class="error-message">
+      <p class="alert alert-danger" role="alert">
         {{ errorMessage.phone }}
       </p>
       {{/if}}
@@ -111,22 +111,19 @@
         <input class="form-control" type="file" name="profilePicture" id="profilePicture-input">
       </div>
 
-        <div id="button">
+    {{#if errorMessage.generic}}
+    <p class="alert alert-danger" role="alert" id="generic-error">
+      {{ errorMessage.generic }}
+    </p>
+    {{/if}}
+        <div class="sign" id="button">
         <button class="btn btn-dark">Sign Up</button>
       </div>  
     </form>
 
-    {{#if errorMessage.generic}}
-    <p class="error-message">
-      {{ errorMessage.generic }}
-    </p>
-    {{/if}}
-
-    <p>
-      Already have an account?
-      <a href="/login">
-        Log in.
-      </a>
-    </p>
+    <div class="account">
+    <p> Already have an account?<a href="/login"> Log in.
+    </a></p>
+    </div>
   </div>
 </section>

@@ -50,7 +50,7 @@ router.post(
         console.log(`key: ${key} value: ${value}`);
 
         if (value === "") {
-          errorMessage[key] = "Mandatoy";
+          errorMessage[key] = "Mandatory";
           isErrors = true;
           return;
         }
