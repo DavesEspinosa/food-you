@@ -46,7 +46,7 @@ router.post("/edit-profile",
       let value = valueInput[1]; // valor del campo
       if(key === 'password' && value !== ''){
 
-        if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(value)) {
+        if (value.length < 8) {
           res.render('profile/edit-profile', { errorMessage: "Password must contain at least 8 characters." });
           return;
         }

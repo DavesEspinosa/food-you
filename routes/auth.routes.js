@@ -41,8 +41,8 @@ router.post(
       if (!/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/.test(password)) {
         errorMessage.passwordMessage =
           "Password must contain at least 8 characters, 1 capital letter, 1 number and 1 special character";
-        isErrors = true;
-      } */
+          isErrors = true;
+        } */
 
       Object.entries(req.body).map((valueInput) => {
         let key = valueInput[0]; // campo
